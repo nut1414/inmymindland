@@ -1,5 +1,5 @@
 
-import Logo from "./icon/logo";
+import Logo from "./icon/logo.jsx";
 
 const NavBar = () => {
   let Nav, button, extra, about, icon, interest;
