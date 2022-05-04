@@ -1,7 +1,11 @@
 module.exports = {
-  content: ['./pages/**/*.{html,js}', './components/**/*.{html,js}'],
+  content: ['./pages/**/*.{html,js,jsx}', './components/**/*.{html,js,jsx}'],
   theme: {
-    extend: {},
+    extend: { 
+      fontFamily: {
+      Kanit: ["'Kanit'", 'sans-serif']
+      },
+    },
   },
   plugins: [],
 }
