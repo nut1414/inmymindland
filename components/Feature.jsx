@@ -11,7 +11,7 @@ const Feature = ({ image, title, detail }) => {
         layout="fixed"
         alt="mac"
       />
-      <div className="text-2xl mt-10">{title}</div>
+      <div className="text-2xl mt-10 mb-4">{title}</div>
       {detail.map(e => {
         return <p key={title+i++} className="font-light text-xl">{e}</p>
       })}
