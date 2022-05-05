@@ -3,13 +3,14 @@ import Link from "next/link";
 import Feature from "../components/Feature";
 import InterestForm from "../components/InterestForm";
 import NavBar from "../components/NavBar";
+import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
     <div className="bg-[#181818] relative font-Kanit">
       <div className="sticky top-0 z-50">
-        <NavBar />
+        <NavBar page={1}/>
       </div>
       <div className="item-center flex flex-col text-center text-white mt-32">
         <div className="text-8xl font-normal">In My Mind</div>
@@ -25,7 +26,7 @@ export default function Home() {
                 <a target="_blank">facebook</a>
               </Link>
             </button>
-            <button className="w-48 h-max bg-gradient-to-r p-4 font-light from-[#feda75]  via-[#d62976] to-[#4f5bd5]">
+            <button className="w-48 h-max bg-gradient-to-r p-4 font-light from-[#feda75] via-[#d62976] to-[#4f5bd5]">
               <Link href="https://www.instagram.com/">
                 <a target="_blank">instragram</a>
               </Link>
@@ -50,7 +51,7 @@ export default function Home() {
             <Feature image={"/features/feat3.png"} title={"ตามหาที่เรียนพิเศษ"} detail={['คุณสามารถเข้ามาค้นหาที่เรียนพิเศษ', 'ที่เหมาะสมกับความต้องการของคุฯได้']}/>
           </div>
         </div>
-        <div className="item-center flex flex-col text-center text-white mt-72">
+        <div id="regisForm" className="item-center flex flex-col text-center text-white mt-72">
           <div className="text-6xl font-normal text-center mb-8">ลงทะเบียนล่วงหน้าตอนนี้ !</div>
           <div className="flex flex-col text-2xl font-light">
             <p>เพื่อรับข้อมูลข่าวสารก่อนใครและเพื่อแสดงถึงความสนใจในแพลตฟอร์มของเรา</p>
@@ -59,7 +60,6 @@ export default function Home() {
           </div>
         </div>
           <InterestForm/>
-        
       </div>
     </div>
   );
