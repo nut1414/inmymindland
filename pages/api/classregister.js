@@ -2,6 +2,7 @@ import dbConnect from '../../lib/db.js'
 import Registrant from '../../models/Registrant.js'
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
+import { appendToSheet } from '../../lib/sheet.js'
 const ajv = new Ajv({ allErrors:true })
 
 ajv.addFormat('phonenumber', /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
@@ -41,6 +42,10 @@ export default async function handler(req, res) {
         }
         
         const a = await Registrant.create( newRegistrant )
+        newRegistrant.createdAt = a.createdAt
+        newRegistrant.id = a._id
+        const sheetarr = Object.values(newRegistrant)
+        appendToSheet(process.env.SHEETID,`extraRegist!A2:${sheetarr.length}`,Object.values(sheetarr))
         res.status(200).json({ success: true, data: newRegistrant })
       }
 
@@ -48,7 +53,7 @@ export default async function handler(req, res) {
       res.status(405).json({ success: false, message:`Cannot ${req.method}` })
     }
   }catch(e){
-    console.log(e)
+    console.error(e)
     res.status(500).json({ success: false, message:`Internal Server Error.` })
   }
   

@@ -2,6 +2,7 @@ import dbConnect from '../../lib/db.js'
 import Follower from '../../models/Follower.js'
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
+import { appendToSheet } from '../../lib/sheet.js'
 const ajv = new Ajv({ allErrors:true })
 addFormats(ajv)
 
@@ -11,7 +12,7 @@ const schema = {
     fname: { type: 'string', minLength: 1 },
     lname: { type: 'string', minLength: 1 },
     email: { type: 'string', format: 'email', minLength: 1 },
-    detail: { type: 'string', default: '' }
+    detail: { type: 'string', default: '-' }
   },
   required: ['fname','lname','email']
 }
@@ -35,6 +36,10 @@ export default async function handler(req, res) {
         }
 
         const a = await Follower.create(newFollower)
+        newFollower.createdAt = a.createdAt
+        newFollower.id = a._id
+        const sheetarr = Object.values(newFollower)
+        appendToSheet(process.env.SHEETID,`followRegist!A2:${sheetarr.length}`,Object.values(sheetarr))
         res.status(200).json({ success: true, data: newFollower })
       }
   

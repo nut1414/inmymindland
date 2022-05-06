@@ -5,6 +5,6 @@ const registrantSchema = new mongoose.Schema({
   lastname: { type: String, required: true },
   email: { type: String, required: true },
   phone: { type: String, required: true }
-})
+}, { timestamps: true })
 
 export default mongoose.models.Registrant || mongoose.model('Registrant',registrantSchema)

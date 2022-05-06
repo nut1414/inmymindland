@@ -14,8 +14,6 @@ const tutortaskSchema = new mongoose.Schema({
   way: { type: String, required: true },
   price: { type: String, required: true },
   detail: { type: String, required: true },
-  status: { type: String, enum: ['found','finding','waiting'], default: 'waiting'},
-  tutor: { type: String, default: '' }
 }, { timestamps: true })
 
 export default mongoose.models.TutorTask || mongoose.model('TutorTask',tutortaskSchema)

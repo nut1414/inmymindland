@@ -1,7 +1,8 @@
 import dbConnect from '../../lib/db.js'
-import Registrant from '../../models/Registrant.js'
+import TutorTask from '../../models/TutorTask.js'
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
+import { makeSheetPivot, appendToSheet } from '../../lib/sheet.js'
 
 const ajv = new Ajv({ allErrors:true })
 
@@ -25,7 +26,7 @@ const schema = {
     price: { type: 'string', minLength: 2 },
     email: { type: 'string', format: 'email' },
     phone: { type: 'string', format: 'phonenumber', minLength: 9, maxLength: 13 },
-    detail: { type: 'string', default: '' }
+    detail: { type: 'string', default: '-' }
   },
   required: ['fname','lname','subjects','gender','level','purpose','time','date','way','price','email','phone','detail']
 }
@@ -58,8 +59,14 @@ export default async function handler(req, res) {
           detail: req.body.detail
         }
         
-        const a = await Registrant.create( newTask )
+        const a = await TutorTask.create( newTask )
+        newTask.createdAt = a.createdAt
+        newTask.id = a._id
+        const sheetarr = Object.values(newTask)
+        appendToSheet(process.env.SHEETID,`tutor!A2:${sheetarr.length}`,Object.values(sheetarr))
         res.status(200).json({ success: true, data: newTask })
+
+        
       }
 
     }else{
