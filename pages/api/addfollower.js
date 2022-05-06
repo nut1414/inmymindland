@@ -25,7 +25,7 @@ export default async function handler(req, res) {
       const valid = validate(req.body)
 
       if (!valid){
-        res.status(400).json({success: false, message:'Invalid request.', errors: validate.errors})
+        res.status(400).json({ success: false, message:'Invalid request.', errors: validate.errors })
       }else{
         const newFollower = { 
           firstname:req.body.fname,
@@ -39,11 +39,11 @@ export default async function handler(req, res) {
       }
   
     }else{
-      res.status(405).json({success: false, message:`Cannot ${req.method}`})
+      res.status(405).json({ success: false, message:`Cannot ${req.method}` })
     }
   }catch(e){
-    console.log(e)
-    res.status(500).json({success: false, message:`Internal Server Error.`})
+    console.error(e)
+    res.status(500).json({ success: false, message:`Internal Server Error.` })
   }
   
 
