@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.6.1",
     "ajv": "^8.11.0",
     "ajv-formats": "^2.1.1",
     "mongoose": "^6.3.2",

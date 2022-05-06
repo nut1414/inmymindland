@@ -27,10 +27,10 @@ const InterestForm = () => {
     })
   }
   return(
-    <form className="flex flex-col text-black text-2xl w-screen justify-self-center items-center justify-items-center gap-16 my-20 px-96" onSubmit={handleSubmit}>
-      <div className="flex flex-row gap-12 place-content-center w-full">
-        <input className="font-extra py-5 px-4 rounded-sm placeholder:font-light w-1/2" type="text" name="fname" value={formData.fname} onChange={handleChange} placeholder="ชื่อจริง *" required/>
-        <input className="font-extra py-5 px-4 rounded-sm placeholder:font-light w-1/2" type="text" name="lname" value={formData.lname} onChange={handleChange} placeholder="นามสกุล *" required/>
+    <form className="flex flex-col text-black text-2xl w-screen justify-self-center items-center justify-items-center gap-16 mt-20 mb-10 px-12 medium-tablet:px-48 big-device:px-96" onSubmit={handleSubmit}>
+      <div className="flex big-device:flex-row flex-col  gap-12 place-content-center w-full">
+        <input className="font-extra py-5 big-device:px-4 rounded-sm placeholder:font-light big-device:w-1/2" type="text" name="fname" value={formData.fname} onChange={handleChange} placeholder="ชื่อจริง *" required/>
+        <input className="font-extra py-5 big-device:px-4 rounded-sm placeholder:font-light big-device:w-1/2" type="text" name="lname" value={formData.lname} onChange={handleChange} placeholder="นามสกุล *" required/>
       </div>
       <input className="font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="email" name="email" value={formData.email} onChange={handleChange} placeholder="อีเมลล์ *" required/>
       <textarea className="font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="text" name="detail" value={formData.detail} onChange={handleChange} placeholder="คำแนะนำเพิ่มเติม *" required/>
