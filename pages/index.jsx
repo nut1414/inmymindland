@@ -3,7 +3,6 @@ import Link from "next/link";
 import Feature from "../components/Feature";
 import InterestForm from "../components/InterestForm";
 import NavBar from "../components/NavBar";
-import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -43,7 +42,7 @@ export default function Home() {
             alt="mac"
           />
         </div>
-        <div className="item-center flex flex-col text-center text-white mt-72">
+        <div className="item-center flex flex-col text-center text-white mt-72 px-32">
           <div className="text-6xl font-normal text-center">ฟีเจอร์</div>
           <div className="flex big-device:flex-row flex-col items-center justify-center  big-device:items-start my-24 gap-64">
             <Feature image={"/features/feat1.png"} title={"พื้นที่สำหรับหาความรู้ด้วยตนเอง"} detail={['คุณสามารถเข้ามาศึกษาเนื้อหาความรู้', 'ที่ถูกรวบรวมไว้ภายในเว็ปไซต์ได้', 'รวมถึงสามารถแลกเปลี่ยนความรู้และ', 'พูดคุยกับคนที่มีความสนใจเหมือนกันได้']}/>
