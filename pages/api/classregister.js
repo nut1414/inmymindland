@@ -29,5 +29,5 @@ export default async function handler(req, res) {
     phone:req.body.phone  
   }
 
-  await collectResponse(serv,validate,newRegistrant,Registrant,'extraRegist')
+  await collectResponse(serv,validate,newRegistrant,Registrant,process.env.CLASSSHEET)
 }

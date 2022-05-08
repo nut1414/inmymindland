@@ -27,5 +27,5 @@ export default async function handler(req, res) {
     detail:req.body.detail  
   }
 
-  await collectResponse(serv,validate,newFollower,Follower,'followRegist')
+  await collectResponse(serv,validate,newFollower,Follower,process.env.FOLLOWSHEET)
 }
