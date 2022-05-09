@@ -12,7 +12,7 @@ export default function Home() {
         <NavBar page={1}/>
       </div>
       <div className="item-center flex flex-col text-center text-white mt-32">
-        <div className="text-8xl font-normal">In My Mind</div>
+        <div className="text-8xl mobile:text-6xl font-normal">In My Mind</div>
         <div className="text-2xl font-light my-8">
           <p>แพลตฟอร์มเพื่อศึกษาสำหรับหาความรู้</p>
           <p>และแลกเปลี่ยนความรู้</p>
