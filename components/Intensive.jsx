@@ -45,9 +45,9 @@ const Intensive = () => {
         </form>
       </div>
       <div className="w-2/5 place-items-center mb-16 pr-8 mobile:pr-0 medium-tablet:pr-0">
-      <svg viewBox="0 0 500 500" width="500" height="500" className="fill-[#C4C4C4] w-full items-center">
-        <rect width="500" height="500"/>
-      </svg>
+        <svg viewBox="0 0 500 500" width="500" height="500" className="fill-[#C4C4C4] w-full items-center">
+          <rect width="500" height="500"/>
+        </svg>
       <p className="underline underline-offset-2 mt-4">รายละเอียดเพิ่มเติม</p>
       </div>
     </div>
