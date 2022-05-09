@@ -27,7 +27,7 @@ const MobileBurger = ({page}) => {
         <div className={`ml-16 `}><Link href="/extraclass" ><a>Extra class</a></Link></div>
       </Menu.Item>
       <Menu.Item className={`text-2xl  items-center text-center my-5 ${page == 3 ? 'text-[#0080FF]' : 'text-white'}`}>
-        <div className={`ml-16`}><Link href="/aboutme"><a>About us</a></Link></div>
+        <div className={`ml-16`}><Link href="/aboutus"><a>About us</a></Link></div>
       </Menu.Item>
     </Menu.Items>
     </Transition>
