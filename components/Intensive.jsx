@@ -31,7 +31,7 @@ const Intensive = () => {
     })
   }
   return(
-    <div className="item-center flex mobile:flex-col flex-row text-center place-items-center text-white mt-8 ">
+    <div className="item-center flex mobile:flex-col medium-tablet:flex-col flex-row text-center place-items-center text-white mt-8 ">
       <div className="flex flex-col pb-16">
         <div className="text-6xl font-normal text-center mobile:px-5 mobile:text-5xl">ลงทะเบียน Intensive class</div>
         <form className="flex flex-col text-black text-2xl justify-self-center items-center mobile:px-5 justify-items-center gap-12 mt-10 mb-10 medium-tablet:px-32 big-device:px-48" onSubmit={handleSubmit}>
@@ -44,7 +44,7 @@ const Intensive = () => {
           <input type="submit"value="ยืนยันการลงทะเบียน" className="text-white text-xl font-light bg-[#1B1B1B] py-4 px-24 border-2 border-[#C7C7C7]"/>
         </form>
       </div>
-      <div className="w-2/5 place-items-center mb-16 pr-8">
+      <div className="w-2/5 place-items-center mb-16 pr-8 mobile:pr-0 medium-tablet:pr-0">
       <svg viewBox="0 0 500 500" width="500" height="500" className="fill-[#C4C4C4] w-full items-center">
         <rect width="500" height="500"/>
       </svg>
