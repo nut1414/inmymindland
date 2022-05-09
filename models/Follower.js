@@ -5,6 +5,6 @@ const followerSchema = new mongoose.Schema({
   lastname: { type: String, required: true },
   email: { type: String, required: true },
   detail: { type: String, default: '' }
-})
+}, { timestamps: true })
 
 export default mongoose.models.Follower || mongoose.model('Follower',followerSchema)
