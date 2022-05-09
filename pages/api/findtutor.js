@@ -10,21 +10,21 @@ addFormats(ajv)
 const schema = {
   type: 'object',
   properties: {
-    fname: { type: 'string', minLength: 1 },
-    lname: { type: 'string', minLength: 1 },
-    subjects: { type: 'string', minLength: 2 },
-    gender: { type: 'string', minLength: 1 },
-    level: { type: 'string', minLength: 2 },
-    purpose: { type: 'string', minLength: 2 },
+    fname: { type: 'string', minLength: 2, maxLength: 32 },
+    lname: { type: 'string', minLength: 2, maxLength: 32 },
+    subjects: { type: 'string', minLength: 3 },
+    gender: { type: 'string', minLength: 2, maxLength: 32 },
+    level: { type: 'string', minLength: 1, maxLength: 32 },
+    purpose: { type: 'string', default: '-', maxLength: 512 },
     time: { type: 'string', minLength: 2 },
     date: { type: 'string', minLength: 2 },
     way: { type: 'string', minLength: 2 },
     price: { type: 'string', minLength: 2 },
-    email: { type: 'string', format: 'email' },
+    email: { type: 'string', format: 'email', minLength: 5 },
     phone: { type: 'string', format: 'phonenumber', minLength: 9, maxLength: 13 },
     detail: { type: 'string', default: '-' }
   },
-  required: ['fname','lname','subjects','gender','level','purpose','time','date','way','price','email','phone','detail']
+  required: ['fname','lname','subjects','gender','level','time','date','way','price','email','phone','detail']
 }
 const validate = ajv.compile(schema)
 

@@ -9,10 +9,10 @@ addFormats(ajv)
 const schema = {
   type: 'object',
   properties: {
-    fname: { type: 'string', minLength: 1 },
-    lname: { type: 'string', minLength: 1 },
-    email: { type: 'string', format: 'email', minLength: 1 },
-    detail: { type: 'string', default: '-' }
+    fname: { type: 'string', minLength: 2, maxLength: 32 },
+    lname: { type: 'string', minLength: 2, maxLength: 32 },
+    email: { type: 'string', format: 'email', minLength: 5 },
+    detail: { type: 'string', default: '-', maxLength: 512 }
   },
   required: ['fname','lname','email']
 }
