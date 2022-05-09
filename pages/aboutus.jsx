@@ -14,7 +14,7 @@ const Aboutus = () => {
       </div>
       <div className="flex flex-col py-12 mobile:px-8 medium-tablet:px-8 px-64 gap-5">
         <p className="text-white text-xl text-left w-full font-normal mobile:text-center medium-tablet:text-center">เกี่ยวกับเรา</p>
-        <div className="flex flex-col text-white font-light pl-16 mobile:pl-0 mediun-tablet:pl-0">
+        <div className="flex flex-col text-white font-light px-16 mobile:px-0 ">
           <p >{'"Inmymind" อินมายมายด์เว็บไซต์ที่จัดทำขึ้นมาพื่อเผยแพร่กระจายสื่อการศึกษาและโอกาสทางการศึกษาให้เข้าถึงแก่ นักเรียน นักศึกษาหรือ ผู้ที่ต้องการศึกษาหาความรู้ รวมถึงเรายังมีบริการที่จะช่วยคุณค้นหาติวเตอร์หรือกวดวิชาที่ตรงกับความต้องการคุณเมื่อคุณต้องการที่จะเรียนรู้เพิ่มเติมต่อยอดจากพื้นฐานที่คุณมี โดยที่เราได้ทำการแบ่งฟังก์ชั่นการใช้งานดังกล่าวออกมาเป็น 3 ส่วนหลักๆ ได้แก่'}</p>
         </div>
         <div className="flex flex-col text-white font-light pl-24 mobile:pl-0 mobile:gap-2  medium-tablet:pl-0 medium-tablet:gap-2">
@@ -40,8 +40,8 @@ const Aboutus = () => {
             <p>ส่วนที่จะช่วยหาคลาสเรียนพิเศษของคุณตามที่คุณต้องการ</p>
           </div>
         </div>
-        <div className="flex flex-col text-white font-light pl-16 mobile:pl-0 medium-tablet:pl-0">
-          <p className="text-center">ทั้ง 3 ส่วนนี้ถูกแบ่งการใช้งานอย่างชัดเจนและครบจบภายในตัวเอง ซึ่งในอนาคตเราหวังว่าเราจะสามารถพัฒนาต่อยอดส่วนอื่นๆเพิ่มเติมรวมถึงการก้าวเข้าไปสู่การเป็น พื้นที่การเรียนรู้ในฝันสำหรับทุกคน</p>
+        <div className="flex flex-col text-white font-light px-16 mobile:px-0 ">
+          <p className="mobile:text-center">ทั้ง 3 ส่วนนี้ถูกแบ่งการใช้งานอย่างชัดเจนและครบจบภายในตัวเอง ซึ่งในอนาคตเราหวังว่าเราจะสามารถพัฒนาต่อยอดส่วนอื่นๆเพิ่มเติมรวมถึงการก้าวเข้าไปสู่การเป็น พื้นที่การเรียนรู้ในฝันสำหรับทุกคน</p>
         </div>
       </div>
       <div className="flex flex-col py-12 mobile:px-8 px-64 gap-5 medium-tablet:px-8">
@@ -60,7 +60,7 @@ const Aboutus = () => {
       </div>
       <div className="flex flex-col py-12 mobile:px-8 px-64 gap-5 w-full">
         <p className="text-white text-xl text-left w-full font-normal mobile:text-center medium-tablet:text-center">ทีมงานของเรา</p>
-        <div className="flex big-device:flex-row flex-col w-full gap-5 pl-24 mobile:pl-0 mobile:place-items-center medium-tablet:pl-0 medium-tablet:place-items-center">
+        <div className="flex big-device:flex-row flex-col w-full gap-12 pl-16 mobile:pl-0 mobile:place-items-center medium-tablet:pl-0 medium-tablet:place-items-center">
           <Member img="/member/Leng.png" position="CEO" name="ยศกร ธรรมชื่นฤทัย" nickname="(เล้ง)"/>
           <Member img="/member/Pan.png" position="CFO" name="อานนท์ วัชระมานนท์" nickname="(ปั้น)"/>
           <Member img="/member/Nut.png" position="CIO" name="ปัณณพัทธ์ สิทธิโอภาสนันท์" nickname="(นัท)"/>
