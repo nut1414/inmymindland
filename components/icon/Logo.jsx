@@ -3,7 +3,7 @@ const Logo = () => {
     <svg
 
       id="icon"
-      className="fill-white mobile:absolute left-1/2"
+      className="fill-white mobile:absolute medium-tablet:absolute left-1/2"
       width="45"
       height="38"
       viewBox="0 0 45 38"
