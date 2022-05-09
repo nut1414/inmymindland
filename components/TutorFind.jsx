@@ -41,7 +41,7 @@ const TutorFind = () => {
     })
   }
   return(
-    <div>
+    <div >
       <div className="text-4xl text-white font-normal text-center mobile:px-5 mobile:text-5xl mb-12">ค้นหาติวเตอร์</div>
       <form className="flex flex-col mx-32 bg-[#181818] mobile:hidden items-center mb-8" onSubmit={handleSubmit}>
         <div className="flex flex-col bg-white">
@@ -124,7 +124,7 @@ const TutorFind = () => {
         </div>
         <input type="submit"value="ค้นหาติวเตอร์" className="text-white text-xl font-light bg-[#1B1B1B] py-4 px-24 mt-12  border-2 border-[#C7C7C7]"/>
       </form>
-      <form className="flex flex-col bg-[#181818] big-device:hidden medium-tablet:hidden    items-center " onSubmit={handleSubmit}>
+      <form className="flex flex-col bg-[#181818] big-device:hidden medium-tablet:hidden items-center " onSubmit={handleSubmit}>
         <div className="flex flex-col bg-white mx-8">
           <div className="flex flex-col ">
             <div className="flex flex-col w-full gap-5 p-12 pb-8 border-b-2 border-[#323232]">

@@ -34,7 +34,7 @@ const Intensive = () => {
     <div className="item-center flex mobile:flex-col medium-tablet:flex-col flex-row text-center place-items-center text-white mt-8 ">
       <div className="flex flex-col pb-16">
         <div className="text-6xl font-normal text-center mobile:px-5 mobile:text-5xl">ลงทะเบียน Intensive class</div>
-        <form className="flex flex-col text-black text-2xl justify-self-center items-center mobile:px-5 justify-items-center gap-12 mt-10 mb-10 medium-tablet:px-32 big-device:px-48" onSubmit={handleSubmit}>
+        <form className="flex flex-col text-black text-2xl justify-self-center items-center mobile:px-2 justify-items-center gap-12 mt-10 mb-10 medium-tablet:px-32 big-device:px-48" onSubmit={handleSubmit}>
           <div className="flex big-device:flex-row flex-col  gap-12 place-content-center w-full">
             <input className="font-extra py-5  rounded-sm placeholder:font-light pl-5 big-device:w-3/5" type="text" name="fname" value={formData.fname} onChange={handleChange} placeholder="ชื่อจริง *" required/>
             <input className="font-extra py-5 rounded-sm placeholder:font-light pl-5 big-device:w-3/5" type="text" name="lname" value={formData.lname} onChange={handleChange} placeholder="นามสกุล *" required/>
