@@ -26,7 +26,7 @@ export default function Home() {
               </Link>
             </button>
             <button className="w-48 h-max bg-gradient-to-r p-4 font-light from-[#feda75] via-[#d62976] to-[#4f5bd5] mobile:mr-6">
-              <Link href="https://www.instagram.com/">
+              <Link href="https://www.instagram.com/inmymindedu/">
                 <a target="_blank">instagram</a>
               </Link>
             </button>
