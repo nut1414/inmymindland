@@ -122,7 +122,7 @@ const TutorFind = () => {
           </div>
           </div>
         </div>
-        <input type="submit"value="ค้นหาติวเตอร์" className="text-white text-xl font-light bg-[#1B1B1B] py-4 px-24 mt-12 border-2 border-[#C7C7C7]"/>
+        <input type="submit"value="ค้นหาติวเตอร์" className="text-white text-xl font-light bg-[#1B1B1B] hover:bg-[#0080FF] py-4 px-24 mt-12 border-2 border-[#C7C7C7]"/>
       </form>
       <form className="flex flex-col bg-[#181818] big-device:hidden medium-tablet:hidden items-center " onSubmit={handleSubmit}>
         <div className="flex flex-col bg-white mx-2">
@@ -205,7 +205,7 @@ const TutorFind = () => {
           </div>
           </div>
         </div>
-        <input type="submit" value="ค้นหาติวเตอร์" className="  text-white text-xl font-light bg-[#1B1B1B] py-4 px-24 mt-4 border-2 border-[#C7C7C7]"/>
+        <input type="submit" value="ค้นหาติวเตอร์" className="  text-white text-xl font-light bg-[#1B1B1B] hover:bg-[#0080FF] py-4 px-24 mt-4 border-2 border-[#C7C7C7]"/>
       </form>
     </div>
     
