@@ -11,7 +11,7 @@ const Intensive = () => {
         fname: formData.fname,
         lname: formData.lname,
         email: formData.email,
-        detail: formData.optional,  
+        detail: formData.detail,  
       }),
       headers: {
         'Content-Type': 'application/json'
