@@ -19,14 +19,14 @@ const MobileBurger = ({page}) => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-    <Menu.Items className="absolute w-72 mt-5 -left-12 bg-[#242424] rounded-md px-12 py-24">
-      <Menu.Item className={`text-2xl items-center text-center w-full my-5 ${page == 1 ? 'text-[#0080FF]' : 'text-white'}`}>
+    <Menu.Items className="absolute w-max mt-5  bg-[#242424] rounded-b-md shadow-lg ">
+      <Menu.Item className={`text-2xl items-center text-center w-full py-5 px-8 border-b border-[#D2D2D7]  ${page == 1 ? 'text-[#0080FF]' : 'text-white'}`}>
         <div className={`ml-16 `}><Link href="/"><a>Home</a></Link></div>
       </Menu.Item>
-      <Menu.Item className={`text-2xl items-center text-center my-5 w-full ${page == 2 ? 'text-[#0080FF]' : 'text-white'}`}>
+      <Menu.Item className={`text-2xl items-center text-center  w-full py-5 px-8 border-b border-[#D2D2D7]  ${page == 2 ? 'text-[#0080FF]' : 'text-white'}`}>
         <div className={`ml-16 `}><Link href="/extraclass" ><a>Extra class</a></Link></div>
       </Menu.Item>
-      <Menu.Item className={`text-2xl  items-center text-center my-5 w-full ${page == 3 ? 'text-[#0080FF]' : 'text-white'}`}>
+      <Menu.Item className={`text-2xl  items-center text-center  w-full py-5 px-8   ${page == 3 ? 'text-[#0080FF]' : 'text-white'}`}>
         <div className={`ml-16`}><Link href="/aboutus"><a>About us</a></Link></div>
       </Menu.Item>
     </Menu.Items>
