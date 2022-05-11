@@ -21,9 +21,9 @@ const NavBar = ({page}) => {
     <>
       <div className="bg-[#242424] flex flex-row text-xl place-content-center medium-tablet:hidden mobile:hidden drop-shadow-md big-device:px-64 font-light px-12 rounded-b-sm round mobile:w-full items-center py-4 transition-all duration-500 ease-in-out ">
       <Logo/>
-        <div className={`ml-16 ${page === 1 ? 'text-[#0080FF]' : 'text-white'}`}><Link href="/"><a>Home</a></Link></div>
-        <div className={`ml-16 ${page === 2 ? 'text-[#0080FF]' : 'text-white'}`}><Link href="/extraclass" ><a>Extra class</a></Link></div>
-        <div className={`ml-16 ${page === 3 ? 'text-[#0080FF]' : 'text-white'}`}><Link href="/aboutus"><a>About us</a></Link></div>
+        <div className={`ml-16 ${page === 1 ? 'text-[#0080FF]' : 'text-white hover:text-[#0080FF]'}`}><Link href="/"><a>Home</a></Link></div>
+        <div className={`ml-16 ${page === 2 ? 'text-[#0080FF]' : 'text-white hover:text-[#0080FF]'}`}><Link href="/extraclass" ><a>Extra class</a></Link></div>
+        <div className={`ml-16 ${page === 3 ? 'text-[#0080FF]' : 'text-white hover:text-[#0080FF]'}`}><Link href="/aboutus"><a>About us</a></Link></div>
         <button onClick={btclick} className="ml-auto border-2 border-white text-white p-3"><a href="#regisForm">ลงทะเบียนให้ความสนใจ</a></button>
       </div>
       <div className="bg-[#242424] relative flex font-normal text-xl w-screen drop-shadow-md  big-device:hidden  px-2 medium-tablet:px-8 rounded-b-sm round items-center	py-8 transition-all duration-500 ease-in-out ">

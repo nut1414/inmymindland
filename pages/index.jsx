@@ -21,12 +21,12 @@ export default function Home() {
           <p>ติดตามเนื้อหาความรู้ได้ที่</p>
           <div className="flex flex-row justify-center my-8 gap-8">
             <button className="w-48 h-max bg-gradient-to-t p-4 font-light from-[#0078FF] to-[#00C6FF] mobile:ml-6">
-              <Link href="https://www.facebook.com/">
+              <Link href="https://www.facebook.com/InmymindEDU/">
                 <a target="_blank">facebook</a>
               </Link>
             </button>
             <button className="w-48 h-max bg-gradient-to-r p-4 font-light from-[#feda75] via-[#d62976] to-[#4f5bd5] mobile:mr-6">
-              <Link href="https://www.instagram.com/">
+              <Link href="https://www.instagram.com/inmymindedu/">
                 <a target="_blank">instagram</a>
               </Link>
             </button>

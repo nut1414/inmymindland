@@ -6,7 +6,7 @@ const TutorFind = () => {
   const [formData, setFormData] = useState({fname: '', lname: '', subjects: '', gender: '', level: '', email: '', phone: '', purpose: '', time: '', date: '', way: '', price: '', detail: ''})
   const handleSubmit =  async (e) => {
     e.preventDefault();
-    const response = await fetch('/api/addfollower',{
+    const response = await fetch('/api/findtutor',{
       method: 'POST',
       body:  JSON.stringify({ 
         fname: formData.fname,
