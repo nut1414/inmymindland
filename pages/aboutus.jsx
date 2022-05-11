@@ -62,7 +62,7 @@ const Aboutus = () => {
         <p className="text-white text-xl text-left w-full font-normal mobile:text-center medium-tablet:text-center">ทีมงานของเรา</p>
         <div className="flex big-device:flex-row flex-col w-full gap-12 pl-16 mobile:pl-0 mobile:place-items-center medium-tablet:pl-0 medium-tablet:place-items-center">
           <Member img="/member/Leng.png" position="CEO" name="ยศกร ธรรมชื่นฤทัย" nickname="(เล้ง)"/>
-          <Member img="/member/Pan.png" position="CFO" name="อานนท์ วัชระมานนท์" nickname="(ปั้น)"/>
+          <Member img="/member/Pan.png" position="CFO" name="อานนท์ วัชระมานนท์" nickname="(ข้าวปั้น)"/>
           <Member img="/member/Nut.png" position="CIO" name="ปัณณพัทธ์ สิทธิโอภาสนันท์" nickname="(นัท)"/>
           <Member img="/member/Punn.png" position="CTO" name="ปุณณวัช นามวงษา" nickname="(ปุณณ์)"/>
         </div>
