@@ -64,7 +64,7 @@ const TutorFind = () => {
                 <input className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="text" name="subjects" value={formData.subjects} onChange={handleChange} placeholder="วิชาชีวิต" required/>
               </div>
             </div>
-            <div className="flex flex-row w-full gap-5 px-12 pb-8 border-b-2 border-[#323232]">
+            <div className="flex flex-row w-full gap-5 px-12 pb-8 border-b-2 border-[#C4C4C4]">
               <div className="flex flex-col w-2/12">
                 <div> ระดับชั้น *</div>
                 <input className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="text" name="level" value={formData.level} onChange={handleChange} placeholder="มหาลัย ปี2" required/>
@@ -127,7 +127,7 @@ const TutorFind = () => {
       <form className="flex flex-col bg-[#181818] big-device:hidden medium-tablet:hidden items-center " onSubmit={handleSubmit}>
         <div className="flex flex-col bg-white mx-2">
           <div className="flex flex-col ">
-            <div className="flex flex-col w-full gap-5 p-12  pb-8 border-b-2 border-[#323232]">
+            <div className="flex flex-col w-full gap-5 p-12  pb-8 border-b-2 border-[#C4C4C4]">
               <div className="flex flex-col">
                 <div className="text-sm"> ชื่อจริง *</div>
                 <input className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="text" name="fname" value={formData.fname} onChange={handleChange} placeholder="ชื่อจริง" required/>
