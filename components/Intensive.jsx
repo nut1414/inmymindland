@@ -5,7 +5,7 @@ const Intensive = () => {
   const [formData, setFormData] = useState({fname: '', lname: '', email: '', detail: ''})
   const handleSubmit =  async (e) => {
     e.preventDefault();
-    const response = await fetch('/api/addfollower',{
+    const response = await fetch('/api/classregister',{
       method: 'POST',
       body:  JSON.stringify({ 
         fname: formData.fname,

@@ -21,7 +21,7 @@ export default function Home() {
           <p>ติดตามเนื้อหาความรู้ได้ที่</p>
           <div className="flex flex-row justify-center my-8 gap-8">
             <button className="w-48 h-max bg-gradient-to-t p-4 font-light from-[#0078FF] to-[#00C6FF] mobile:ml-6">
-              <Link href="https://www.facebook.com/">
+              <Link href="https://www.facebook.com">
                 <a target="_blank">facebook</a>
               </Link>
             </button>
