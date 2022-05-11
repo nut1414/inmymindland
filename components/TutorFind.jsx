@@ -74,7 +74,7 @@ const TutorFind = () => {
                 <input className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="text" name="phone" value={formData.phone} onChange={handleChange} placeholder="+66" required/>
               </div>
               <div className="flex flex-col w-6/12">
-                <div> อีเมล์ *</div>
+                <div> อีเมล *</div>
                 <input className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="text" name="email" value={formData.email} onChange={handleChange} placeholder="email@mail.com" required/>
               </div>
             </div>
@@ -156,7 +156,7 @@ const TutorFind = () => {
                 <input className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="text" name="phone" value={formData.phone} onChange={handleChange} placeholder="+66" required/>
               </div>
               <div className="flex flex-col ">
-                <div className="text-sm"> อีเมลล์ *</div>
+                <div className="text-sm"> อีเมล *</div>
                 <input className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="text" name="email" value={formData.email} onChange={handleChange} placeholder="email@mail.com" required/>
               </div>
             </div>

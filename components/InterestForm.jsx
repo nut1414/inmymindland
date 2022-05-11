@@ -36,7 +36,7 @@ const InterestForm = () => {
         <input className="font-extra py-5 px-4 rounded-sm placeholder:font-light big-device:w-1/2" type="text" name="fname" value={formData.fname} onChange={handleChange} placeholder="ชื่อจริง *" required/>
         <input className="font-extra py-5 px-4 rounded-sm placeholder:font-light big-device:w-1/2" type="text" name="lname" value={formData.lname} onChange={handleChange} placeholder="นามสกุล *" required/>
       </div>
-      <input className="font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="email" name="email" value={formData.email} onChange={handleChange} placeholder="อีเมลล์ *" required/>
+      <input className="font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="email" name="email" value={formData.email} onChange={handleChange} placeholder="อีเมล *" required/>
       <textarea className="font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="text" name="detail" value={formData.detail} onChange={handleChange} placeholder="คำแนะนำเพิ่มเติม *"/>
       <div className="border-2 border-[#C7C7C7] w-full bg-[#1B1B1B] big-device:w-2/5">
         <input type="submit"value="ยืนยันการลงทะเบียน" className="text-white text-xl w-full font-light hover:bg-[#0080FF] py-4 "/>
