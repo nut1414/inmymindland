@@ -11,7 +11,7 @@ const TutorFind = () => {
       body:  JSON.stringify({ 
         fname: formData.fname,
         lname: formData.lname,
-        subject: formData.subjects,
+        subjects: formData.subjects,
         gender: formData.gender,
         level: formData.level,
         email: formData.email,
