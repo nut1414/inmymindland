@@ -11,7 +11,7 @@ const TutorFind = () => {
       body:  JSON.stringify({ 
         fname: formData.fname,
         lname: formData.lname,
-        subject: formData.subjects,
+        subjects: formData.subjects,
         gender: formData.gender,
         level: formData.level,
         email: formData.email,
@@ -64,7 +64,7 @@ const TutorFind = () => {
                 <input className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="text" name="subjects" value={formData.subjects} onChange={handleChange} placeholder="วิชาชีวิต" required/>
               </div>
             </div>
-            <div className="flex flex-row w-full gap-5 px-12 pb-8 border-b-2 border-[#323232]">
+            <div className="flex flex-row w-full gap-5 px-12 pb-8 border-b-2 border-[#C4C4C4]">
               <div className="flex flex-col w-2/12">
                 <div> ระดับชั้น *</div>
                 <input className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="text" name="level" value={formData.level} onChange={handleChange} placeholder="มหาลัย ปี2" required/>
@@ -74,7 +74,7 @@ const TutorFind = () => {
                 <input className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="text" name="phone" value={formData.phone} onChange={handleChange} placeholder="+66" required/>
               </div>
               <div className="flex flex-col w-6/12">
-                <div> อีเมล์ *</div>
+                <div> อีเมล *</div>
                 <input className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="text" name="email" value={formData.email} onChange={handleChange} placeholder="email@mail.com" required/>
               </div>
             </div>
@@ -122,12 +122,12 @@ const TutorFind = () => {
           </div>
           </div>
         </div>
-        <input type="submit"value="ค้นหาติวเตอร์" className="text-white text-xl font-light bg-[#1B1B1B] py-4 px-24 mt-12 border-2 border-[#C7C7C7]"/>
+        <input type="submit"value="ค้นหาติวเตอร์" className="text-white text-xl font-light bg-[#1B1B1B] hover:bg-[#0080FF] py-4 px-24 mt-12 border-2 border-[#C7C7C7]"/>
       </form>
       <form className="flex flex-col bg-[#181818] big-device:hidden medium-tablet:hidden items-center " onSubmit={handleSubmit}>
         <div className="flex flex-col bg-white mx-2">
           <div className="flex flex-col ">
-            <div className="flex flex-col w-full gap-5 p-12  pb-8 border-b-2 border-[#323232]">
+            <div className="flex flex-col w-full gap-5 p-12  pb-8 border-b-2 border-[#C4C4C4]">
               <div className="flex flex-col">
                 <div className="text-sm"> ชื่อจริง *</div>
                 <input className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="text" name="fname" value={formData.fname} onChange={handleChange} placeholder="ชื่อจริง" required/>
@@ -156,7 +156,7 @@ const TutorFind = () => {
                 <input className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="text" name="phone" value={formData.phone} onChange={handleChange} placeholder="+66" required/>
               </div>
               <div className="flex flex-col ">
-                <div className="text-sm"> อีเมลล์ *</div>
+                <div className="text-sm"> อีเมล *</div>
                 <input className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="text" name="email" value={formData.email} onChange={handleChange} placeholder="email@mail.com" required/>
               </div>
             </div>
@@ -205,7 +205,7 @@ const TutorFind = () => {
           </div>
           </div>
         </div>
-        <input type="submit" value="ค้นหาติวเตอร์" className="  text-white text-xl font-light bg-[#1B1B1B] py-4 px-24 mt-4 border-2 border-[#C7C7C7]"/>
+        <input type="submit" value="ค้นหาติวเตอร์" className="  text-white text-xl font-light bg-[#1B1B1B] hover:bg-[#0080FF] py-4 px-24 mt-4 border-2 border-[#C7C7C7]"/>
       </form>
     </div>
     
