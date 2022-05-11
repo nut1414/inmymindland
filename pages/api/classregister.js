@@ -14,7 +14,7 @@ const schema = {
     email: { type: 'string', format: 'email', minLength: 5 },
     detail: { type: 'string', default: '-', maxLength: 512 }
   },
-  required: ['fname','lname','email']
+  required: ['fname','lname','email','detail']
 }
 const validate = ajv.compile(schema)
 
