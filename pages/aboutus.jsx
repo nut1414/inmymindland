@@ -14,7 +14,7 @@ const Aboutus = () => {
       </div>
       <div className="flex flex-col py-12 mobile:px-8 medium-tablet:px-8 px-64 gap-5">
         <p className="text-white text-xl text-left w-full font-normal mobile:text-center medium-tablet:text-center">เกี่ยวกับเรา</p>
-        <div className="flex flex-col text-white font-light px-16 mobile:px-0 ">
+        <div className="flex flex-col text-white font-light px-16 mobile:px-0 mobile:text-center ">
           <p >{'"Inmymind" อินมายมายด์เว็บไซต์ที่จัดทำขึ้นมาพื่อเผยแพร่กระจายสื่อการศึกษาและโอกาสทางการศึกษาให้เข้าถึงแก่ นักเรียน นักศึกษาหรือ ผู้ที่ต้องการศึกษาหาความรู้ รวมถึงเรายังมีบริการที่จะช่วยคุณค้นหาติวเตอร์หรือกวดวิชาที่ตรงกับความต้องการคุณเมื่อคุณต้องการที่จะเรียนรู้เพิ่มเติมต่อยอดจากพื้นฐานที่คุณมี โดยที่เราได้ทำการแบ่งฟังก์ชั่นการใช้งานดังกล่าวออกมาเป็น 3 ส่วนหลักๆ ได้แก่'}</p>
         </div>
         <div className="flex flex-col text-white font-light pl-24 mobile:pl-0 mobile:gap-2  medium-tablet:pl-0 medium-tablet:gap-2">
@@ -47,13 +47,13 @@ const Aboutus = () => {
       <div className="flex flex-col py-12 mobile:px-8 px-64 gap-5 medium-tablet:px-8">
         <p className="text-white text-xl text-left w-full font-normal mobile:text-center medium-tablet:text-center">ติดต่อเรา</p>
         <div className="flex flex-row mobile:flex-col w-full gap-5">
-          <div className="flex flex-col text-white font-light pl-24 pr-32 mobile:p-2 w-1/2 mobile:w-full medium-tablet:w-full medium-tablet::p-2">
+          <div className="flex flex-col text-white font-light pl-24 pr-32 mobile:p-2 w-1/2 mobile:w-full medium-tablet:w-full medium-tablet:p-2">
             <p className="border-b border-white">เบอร์โทรติดต่อ</p>
             <p className="indent-4">{'085-329-2092 (เล้ง)'}</p>
             <p className="indent-4">{'092-639-8220 (ปั้น)'}</p>
           </div>
           <div className="flex flex-col text-white w-1/2 font-light mobile:p-2 mobile:w-full medium-tablet:p-2 medium-tablet:w-full">
-            <p className="border-b border-white">อีเมลล์</p>
+            <p className="border-b border-white">อีเมล</p>
             <p className="indent-4">inmymind.edu@gmail.com</p>
           </div>
         </div>
