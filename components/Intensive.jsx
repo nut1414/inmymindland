@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Image from "next/image";
 import Swal from 'sweetalert2';
 
 const Intensive = () => {
@@ -44,10 +45,8 @@ const Intensive = () => {
           <input type="submit"value="ยืนยันการลงทะเบียน" className="text-white text-xl font-light bg-[#1B1B1B] hover:bg-[#0080FF] py-4 px-24 border-2 border-[#C7C7C7]"/>
         </form>
       </div>
-      <div className="w-2/5 place-items-center mb-16 pr-8 mobile:pr-0 medium-tablet:pr-0">
-        <svg viewBox="0 0 500 500" width="500" height="500" className="fill-[#C4C4C4] w-full items-center">
-          <rect width="500" height="500"/>
-        </svg>
+      <div className=" place-items-center mb-16 mobile:p-8">
+        <Image alt="show" src="/showimg.png" width="500" height="500" layout="intrinsic"/>
       <p className="underline underline-offset-2 mt-4">รายละเอียดเพิ่มเติม</p>
       </div>
     </div>
