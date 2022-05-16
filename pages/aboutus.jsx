@@ -1,9 +1,13 @@
 import Member from "../components/Member";
 import NavBar from "../components/NavBar";
+import Head from "next/head";
 
 const Aboutus = () => {
   return(
     <div className="bg-[#181818] relative font-Kanit">
+      <Head>
+        <title>Extral Class | Inmymind</title>
+      </Head>
       <div className="sticky top-0 z-50">
         <NavBar page={3}/>
       </div>
