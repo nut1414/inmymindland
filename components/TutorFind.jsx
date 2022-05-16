@@ -91,11 +91,11 @@ const TutorFind = () => {
               </div>
               <div className="flex flex-col w-2/12">
                 <div className="truncate"> วันที่ต้องการเรียน *</div>
-                <select className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" onChange={handleChange} name="date" value={formData.date} require>
+                <select className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" onChange={handleChange} name="date" value={formData.date}>
                   <option value="Sunday">วันอาทิตย์</option>
                   <option value="Monday">วันจันทร์</option>
                   <option value="Tuesday">วันอังคาร</option>
-                  <option value="Wednesday">วันพุทธ</option>
+                  <option value="Wednesday">วันพุธ</option>
                   <option value="Thursday">วันพฤหัส</option>
                   <option value="Friday">วันศุกร์</option>
                   <option value="Saturday">วันเสาร์</option>
