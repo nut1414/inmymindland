@@ -21,21 +21,21 @@ const Aboutus = () => {
           <div className="flex flex-row mobile:flex-col mobile:place-items-center medium-tablet:flex-col medium-tablet:place-items-center mobile:gap-1 medium-tablet:gap-1">
             <div className="flex flex-row ">
               <p className="text-[#0080FF]">self learning</p>
-              <p>(เรียนรู้ด้วยตนเอง)</p>
+              <p>&nbsp;(เรียนรู้ด้วยตนเอง)&nbsp;</p>
             </div>
             <p>ส่วนที่จะเผยแพร่เนื้อหาสำหรับการศึกษาให้ทุกคนอย่างเสรี</p>
           </div>
           <div className="flex flex-row mobile:flex-col mobile:place-items-center medium-tablet:flex-col medium-tablet:place-items-center mobile:gap-1 medium-tablet:gap-1">
             <div className="flex flex-row">
               <p className="text-[#0080FF]">opportunity</p>
-              <p>(โอกาสทางการศึกษา)</p>
+              <p>&nbsp;(โอกาสทางการศึกษา)&nbsp;</p>
             </div>
             <p>ส่วนที่จะเผยแพรโอกาสและข่าวสารที่เกี่ยวเนื่องกับการศึกษาให้ทุกคนอย่างเสรี</p>
           </div>
           <div className="flex flex-row mobile:flex-col mobile:place-items-center medium-tablet:flex-col medium-tablet:place-items-center mobile:gap-1 medium-tablet:gap-1">
             <div className="flex flex-row">
               <p className="text-[#0080FF]">extra class</p>
-              <p>(คลาสเรียนพิเศษ)</p>
+              <p>&nbsp;(คลาสเรียนพิเศษ)&nbsp;</p>
             </div>
             <p>ส่วนที่จะช่วยหาคลาสเรียนพิเศษของคุณตามที่คุณต้องการ</p>
           </div>
