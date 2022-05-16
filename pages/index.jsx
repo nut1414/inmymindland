@@ -65,7 +65,7 @@ export default function Home() {
         <div id="regisForm" className="item-center flex flex-col text-center text-white mt-72 mobile:px-8">
           <div className="text-6xl font-normal text-center mb-8 mobile:text-5xl">ลงทะเบียนล่วงหน้าตอนนี้ !</div>
           <div className="flex flex-col text-lg  font-light bigdevice:px-80">
-            <p>เพื่อรับข้อมูลข่าวสารก่อนใครและเพื่อแสดงถึงความสนใจในแพลตฟอร์มของเราโดยข้อมูลต่างๆของคุณจะไม่ถูกนำไปเผยแพร่สู่สาธารณะโดยเด็ดขาดขอบคุณสำหรับความสนใจในแพลตฟอร์มของเรา!</p>
+            <p>เพื่อรับข้อมูลข่าวสารก่อนใครและเพื่อแสดงถึงความสนใจในแพลตฟอร์มของเรา โดยข้อมูลต่างๆของคุณจะไม่ถูกนำไปเผยแพร่สู่สาธารณะโดยเด็ดขาด ขอบคุณสำหรับความสนใจในแพลตฟอร์มของเรา!</p>
           </div>
         </div>
         <InterestForm/>
