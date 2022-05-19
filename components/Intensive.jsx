@@ -2,6 +2,7 @@ import { useState, Fragment } from "react";
 import Image from "next/image";
 import Swal from 'sweetalert2';
 import { Dialog, Transition } from "@headlessui/react";
+import Link from "next/link";
 
 const Intensive = () => {
   const [formData, setFormData] = useState({fname: '', lname: '', email: '', detail: ''})
@@ -91,7 +92,11 @@ const Intensive = () => {
           </div>
         </Dialog>
       </Transition>
-      <p className="underline underline-offset-2 mt-4">รายละเอียดเพิ่มเติม</p>
+      <p className="underline underline-offset-2 mt-4">
+        <Link href="https://www.facebook.com/InmymindEDU/posts/119301974106995">
+          <a target="_blank">รายละเอียดเพิ่มเติม</a>
+        </Link>  
+      </p>
       </div>
     </div>
   )
