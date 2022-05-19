@@ -96,6 +96,7 @@ const Intensive = () => {
         <Link href="https://www.facebook.com/InmymindEDU/posts/119301974106995">
           <a target="_blank">รายละเอียดเพิ่มเติม</a>
         </Link>
+
       </p>
       </div>
     </div>

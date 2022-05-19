@@ -57,6 +57,7 @@ const Aboutus = () => {
             <p className="indent-4">{'092-639-8220 (ปั้น)'}</p>
           </div>
           <div className="flex flex-col text-white w-1/2 font-light pr-24 mobile:p-2 mobile:w-full medium-tablet:p-2 medium-tablet:w-full">
+
             <p className="border-b border-white">อีเมล</p>
             <p className="indent-4">inmymind.edu@gmail.com</p>
           </div>
