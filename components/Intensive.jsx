@@ -95,7 +95,8 @@ const Intensive = () => {
       <p className="underline underline-offset-2 mt-4">
         <Link href="https://www.facebook.com/InmymindEDU/posts/119301974106995">
           <a target="_blank">รายละเอียดเพิ่มเติม</a>
-        </Link>  
+        </Link>
+
       </p>
       </div>
     </div>
