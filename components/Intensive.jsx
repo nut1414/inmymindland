@@ -93,7 +93,7 @@ const Intensive = () => {
         </Dialog>
       </Transition>
       <p className="underline underline-offset-2 mt-4">
-        <Link href="https://www.facebook.com/InmymindEDU/posts/119301974106995">
+        <Link href=" https://www.facebook.com/107840515253141/posts/120326797337846">
           <a target="_blank">รายละเอียดเพิ่มเติม</a>
         </Link>
 
