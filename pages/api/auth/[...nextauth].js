@@ -17,4 +17,5 @@ export default NextAuth({
     verifyRequest: "/auth/verify-request", // (used for check email message)
     newUser: null, // If set, new users will be directed here on first sign in
   },
+
 })
