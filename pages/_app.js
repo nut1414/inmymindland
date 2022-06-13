@@ -1,6 +1,8 @@
 import "../styles/globals.css";
 import Script from "next/script";
-function MyApp({ Component, pageProps }) {
+import { SessionProvider } from "next-auth/react"
+
+function MyApp({ Component, pageProps: { session, ...pageProps }, }) {
   return (
     <>
       <Script
@@ -10,7 +12,10 @@ function MyApp({ Component, pageProps }) {
         client="ca-pub-4091008187773851"
         crossorigin="anonymous"
       />
-      <Component {...pageProps} />
+      <SessionProvider session={session}>
+        <Component {...pageProps} />
+      </SessionProvider>
+      
     </>
   );
 }
