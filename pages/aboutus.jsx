@@ -9,7 +9,7 @@ const Aboutus = () => {
         <title>Extral Class | Inmymind</title>
       </Head>
       <div className="sticky top-0 z-50">
-        <NavBar page={3}/>
+        <NavBar />
       </div>
       <div className="flex flex-col items-center py-32 mobile:py-16 medium-tablet:py-16 border-b">
         <p className="text-[#0080FF] font-light text-xl">Inmymind</p>

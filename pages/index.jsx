@@ -11,17 +11,31 @@ export default function Home() {
     <div className="bg-[#181818] relative font-Kanit w-screen">
       <Head>
         <title>Inmymind</title>
-        <link rel="icon" href="/favicon.ico"/>
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
-<link rel="manifest" href="/site.webmanifest"/>
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"/>
-<meta name="msapplication-TileColor" content="#da532c"/>
-<meta name="theme-color" content="#ffffff"/>
+        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
       </Head>
       <div className="sticky top-0 z-50">
-        <NavBar page={1}/>
+        <NavBar/>
       </div>
       <div className="item-center flex flex-col text-center text-white mt-32">
         <div className="text-8xl mobile:text-6xl font-normal">In My Mind</div>
@@ -57,18 +71,51 @@ export default function Home() {
         <div className="item-center flex flex-col text-center text-white mt-72 px-32 mobile:px-8">
           <div className="text-6xl font-normal text-center">ฟีเจอร์</div>
           <div className="flex big-device:flex-row flex-col items-center justify-center  big-device:items-start medium-tablet:gap-32 my-24 gap-64">
-            <Feature image={"/features/feat1.png"} title={"พื้นที่สำหรับหาความรู้ด้วยตนเอง"} detail={['คุณสามารถเข้ามาศึกษาเนื้อหาความรู้', 'ที่ถูกรวบรวมไว้ภายในเว็ปไซต์ได้', 'รวมถึงสามารถแลกเปลี่ยนความรู้และ', 'พูดคุยกับคนที่มีความสนใจเหมือนกันได้']}/>
-            <Feature image={"/features/feat2.png"} title={"ข่าวสารโอกาสทางการศึกษา"} detail={['คุณสามารถเข้ามาค้นหาโอกาส', 'ทางการศึกษาต่างๆ ที่เราได้ทำการ', 'รวบรวมเอาไว้ได้']}/>
-            <Feature image={"/features/feat3.png"} title={"ตามหาที่เรียนพิเศษ"} detail={['คุณสามารถเข้ามาค้นหาที่เรียนพิเศษ', 'ที่เหมาะสมกับความต้องการของคุณได้']}/>
+            <Feature
+              image={"/features/feat1.png"}
+              title={"พื้นที่สำหรับหาความรู้ด้วยตนเอง"}
+              detail={[
+                "คุณสามารถเข้ามาศึกษาเนื้อหาความรู้",
+                "ที่ถูกรวบรวมไว้ภายในเว็ปไซต์ได้",
+                "รวมถึงสามารถแลกเปลี่ยนความรู้และ",
+                "พูดคุยกับคนที่มีความสนใจเหมือนกันได้",
+              ]}
+            />
+            <Feature
+              image={"/features/feat2.png"}
+              title={"ข่าวสารโอกาสทางการศึกษา"}
+              detail={[
+                "คุณสามารถเข้ามาค้นหาโอกาส",
+                "ทางการศึกษาต่างๆ ที่เราได้ทำการ",
+                "รวบรวมเอาไว้ได้",
+              ]}
+            />
+            <Feature
+              image={"/features/feat3.png"}
+              title={"ตามหาที่เรียนพิเศษ"}
+              detail={[
+                "คุณสามารถเข้ามาค้นหาที่เรียนพิเศษ",
+                "ที่เหมาะสมกับความต้องการของคุณได้",
+              ]}
+            />
           </div>
         </div>
-        <div id="regisForm" className="item-center flex flex-col text-center text-white mt-72 mobile:px-8">
-          <div className="text-6xl font-normal text-center mb-8 mobile:text-5xl">ลงทะเบียนล่วงหน้าตอนนี้ !</div>
+        <div
+          id="regisForm"
+          className="item-center flex flex-col text-center text-white mt-72 mobile:px-8"
+        >
+          <div className="text-6xl font-normal text-center mb-8 mobile:text-5xl">
+            ลงทะเบียนล่วงหน้าตอนนี้ !
+          </div>
           <div className="flex flex-col text-lg  font-light bigdevice:px-80">
-            <p>เพื่อรับข้อมูลข่าวสารก่อนใครและเพื่อแสดงถึงความสนใจในแพลตฟอร์มของเรา โดยข้อมูลต่างๆของคุณจะไม่ถูกนำไปเผยแพร่สู่สาธารณะโดยเด็ดขาด ขอบคุณสำหรับความสนใจในแพลตฟอร์มของเรา!</p>
+            <p>
+              เพื่อรับข้อมูลข่าวสารก่อนใครและเพื่อแสดงถึงความสนใจในแพลตฟอร์มของเรา
+              โดยข้อมูลต่างๆของคุณจะไม่ถูกนำไปเผยแพร่สู่สาธารณะโดยเด็ดขาด
+              ขอบคุณสำหรับความสนใจในแพลตฟอร์มของเรา!
+            </p>
           </div>
         </div>
-        <InterestForm/>
+        <InterestForm />
       </div>
     </div>
   );
