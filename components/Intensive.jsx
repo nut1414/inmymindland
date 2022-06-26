@@ -57,7 +57,7 @@ const Intensive = () => {
       </div>
       <div className=" place-items-center mb-16 mobile:p-8">
         <div onClick={openModal}>
-          <Image alt=" " src="/ " width="500" height="500" layout="intrinsic"/>
+          <Image alt=" " src="/showimg.png" width="500" height="500" layout="intrinsic"/>
         </div>
         <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -85,7 +85,7 @@ const Intensive = () => {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-transparent text-left align-middle transition-all">
-                  <Image alt="show" src="/" width="800" height="800" layout="intrinsic" />
+                  <Image alt="show" src="/showimg.png" width="800" height="800" layout="intrinsic" />
                 </Dialog.Panel>
               </Transition.Child>
             </div>
