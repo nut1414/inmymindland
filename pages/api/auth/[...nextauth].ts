@@ -1,13 +1,11 @@
 import NextAuth from "next-auth/next"
 import GoogleProvider from "next-auth/providers/google"
 
-console.log(process.env.GOOGLE_CLIENT_ID)
-
 export default NextAuth({
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET
+      clientId: process.env.GOOGLE_CLIENT_ID || '',
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || ''
     }),
   ],
   pages: {
@@ -15,7 +13,7 @@ export default NextAuth({
     signOut: "/auth/logout",
     error: "/auth/error", // Error code passed in query string as ?error=
     verifyRequest: "/auth/verify-request", // (used for check email message)
-    newUser: null, // If set, new users will be directed here on first sign in
+    // newUser: '', // If set, new users will be directed here on first sign in
   },
 
 })

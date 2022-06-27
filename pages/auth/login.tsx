@@ -1,16 +1,21 @@
-import { useSession, getProviders, signIn } from "next-auth/react"
+import { BuiltInProviderType } from "next-auth/providers"
+import { useSession, getProviders, signIn, LiteralUnion, ClientSafeProvider } from "next-auth/react"
 import { useRouter } from 'next/router'
 
-export async function getServerSideProps(context) {
+interface SignInProps {
+  providers: Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider>
+}
+// Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider>
+export async function getServerSideProps() {
   const providers = await getProviders()
   return {
     props: { providers },
   }
 }
 
-export default function SignIn({ providers }) {
+export default function SignIn({ providers }: SignInProps) {
   const router = useRouter()
-  const callbackUrl = router.query.callbackUrl || '/'
+  const callbackUrl = router.query.callbackUrl as string || '/'
   const { data: session } = useSession()
   if(!session){
     return (

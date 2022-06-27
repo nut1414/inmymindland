@@ -2,6 +2,7 @@ import TutorTask from '../../models/TutorTask.js'
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
 import collectResponse from '../../lib/collectResponse.js'
+import { NextApiRequest, NextApiResponse } from 'next'
 
 const ajv = new Ajv({ allErrors:true })
 ajv.addFormat('phonenumber', /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
@@ -28,7 +29,7 @@ const schema = {
 }
 const validate = ajv.compile(schema)
 
-export default async function handler(req, res) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const serv = {req, res}
   req.body.phone = req.body.phone.split("-|(|)|+").join("")
   const newTask = {

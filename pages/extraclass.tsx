@@ -11,7 +11,7 @@ const Extraclass = () => {
       <title>Extral Class | Inmymind</title>
       </Head>
       <div className="sticky top-0 z-50">
-        <NavBar page={2}/>
+        <NavBar />
       </div>
       <div className="flex flex-col">
         <Intensive/>

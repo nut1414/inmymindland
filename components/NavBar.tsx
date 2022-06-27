@@ -22,7 +22,7 @@ const NavBar = () => {
         <div className={`ml-16 ${pathName === '/' ? 'text-[#0080FF]' : 'text-white hover:text-[#0080FF]'}`}><Link href="/"><a>Home</a></Link></div>
         <div className={`ml-16 ${pathName === '/extraclass' ? 'text-[#0080FF]' : 'text-white hover:text-[#0080FF]'}`}><Link href="/extraclass" ><a>Extra class</a></Link></div>
         <div className={`ml-16 ${pathName === '/aboutus' ? 'text-[#0080FF]' : 'text-white hover:text-[#0080FF]'}`}><Link href="/aboutus"><a>About us</a></Link></div>
-        <button className="ml-auto border-2 border-white text-white p-3" onClick={session ? signOut : signIn}>{session ? "sign out" : "sign in"}</button>
+        <button className="ml-auto border-2 border-white text-white p-3" onClick={() => {session ? signOut() : signIn()}}>{session ? "sign out" : "sign in"}</button>
       </div>
       <div className="bg-[#242424] relative flex font-normal text-xl w-screen drop-shadow-md  big-device:hidden  px-2 medium-tablet:px-8 rounded-b-sm round items-center    py-8 transition-all duration-500 ease-in-out ">
         <MobileBurger/>

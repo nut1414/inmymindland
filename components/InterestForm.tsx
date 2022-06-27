@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 
 const InterestForm = () => {
   const [formData, setFormData] = useState({fname: '', lname: '', email: '', detail: ''})
-  const handleSubmit =  async (e) => {
+  const handleSubmit =  async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     const response = await fetch('/api/addfollower',{
       method: 'POST',
@@ -23,7 +23,7 @@ const InterestForm = () => {
       'success'
     )
   }
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> ) => {
     const value = e.target.value;
     setFormData({
       ...formData,
@@ -37,7 +37,7 @@ const InterestForm = () => {
         <input className="font-extra py-5 px-4 rounded-sm placeholder:font-light big-device:w-1/2" type="text" name="lname" value={formData.lname} onChange={handleChange} placeholder="นามสกุล *" required/>
       </div>
       <input className="font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="email" name="email" value={formData.email} onChange={handleChange} placeholder="อีเมล *" required/>
-      <textarea className="font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" type="text" name="detail" value={formData.detail} onChange={handleChange} placeholder="คำแนะนำเพิ่มเติม *"/>
+      <textarea className="font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" name="detail" value={formData.detail} onChange={handleChange} placeholder="คำแนะนำเพิ่มเติม *"/>
       <div className="border-2 border-[#C7C7C7] w-full bg-[#1B1B1B] big-device:w-2/5">
         <input type="submit"value="ยืนยันการลงทะเบียน" className="text-white text-xl w-full font-light hover:bg-[#0080FF] py-4 "/>
       </div>

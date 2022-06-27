@@ -1,7 +1,13 @@
 import Image from "next/image";
 
+type MemberProps = {
+  img: string,
+  position: string,
+  name: string,
+  nickname: string,
+}
 
-const Member = ({img, position, name, nickname}) => {
+const Member = ({img, position, name, nickname}: MemberProps) => {
   return(
     <div className="flex flex-col mobile:place-items-center gap-2">
       <Image src={img} width={200} height={160} layout="fixed" alt={name}/>

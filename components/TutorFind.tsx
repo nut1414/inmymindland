@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 
 const TutorFind = () => {
   const [formData, setFormData] = useState({fname: '', lname: '', subjects: '', gender: '', level: '', email: '', phone: '', purpose: '', time: '', date: '', way: '', price: '', detail: ''})
-  const handleSubmit =  async (e) => {
+  const handleSubmit =  async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const response = await fetch('/api/findtutor',{
       method: 'POST',
@@ -33,7 +33,7 @@ const TutorFind = () => {
       'success'
     )
   }
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
     setFormData({
       ...formData,
@@ -103,7 +103,7 @@ const TutorFind = () => {
               </div>
               <div className="flex flex-col w-2/12">
                 <div className="truncate"> ช่องทางการเรียน *</div>
-                <select className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" onChange={handleChange} name="way" value={formData.way} require>
+                <select className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" onChange={handleChange} name="way" value={formData.way} required>
                   <option value="online">เรียนออนไลน์</option>
                   <option value="onsite">เรียนสด</option>
                 </select>
@@ -173,7 +173,7 @@ const TutorFind = () => {
                 </div>
                 <div className="flex flex-col w-2/5">
                   <div className="text-sm"> วันที่ต้องการเรียน *</div>
-                  <select className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" onChange={handleChange} name="date" value={formData.date} require>
+                  <select className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" onChange={handleChange} name="date" value={formData.date} required>
                     <option value="Sunday">วันอาทิตย์</option>
                     <option value="Monday">วันจันทร์</option>
                     <option value="Tuesday">วันอังคาร</option>
@@ -187,7 +187,7 @@ const TutorFind = () => {
               <div className="flex flex-row gap-5">
                 <div className="flex flex-col w-2/5">
                   <div className="text-sm"> ช่องทางการเรียน *</div>
-                  <select className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" onChange={handleChange} name="way" value={formData.way} require>
+                  <select className="border-2 border-[#C7C7C7] font-extra w-full py-5 px-4 rounded-sm placeholder:font-light" onChange={handleChange} name="way" value={formData.way} required>
                     <option value="online">เรียนออนไลน์</option>
                     <option value="onsite">เรียนสด</option>
                   </select>
