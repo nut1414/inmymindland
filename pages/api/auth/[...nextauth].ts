@@ -27,7 +27,6 @@ export default NextAuth({
       console.log(profile)
       console.log(credentials)
 
-
       return true
     },
   },

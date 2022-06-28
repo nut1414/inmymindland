@@ -48,5 +48,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     detail: req.body.detail
   }
 
-  await collectResponse(serv,validate,newTask,TutorTask,process.env.TUTORSHEET)
+  await collectResponse(serv,validate,newTask,TutorTask,process.env.TUTORSHEET || '')
 }
