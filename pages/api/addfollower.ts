@@ -28,5 +28,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     detail:req.body.detail  
   }
 
-  await collectResponse(serv,validate,newFollower,Follower,process.env.FOLLOWSHEET)
+  await collectResponse(serv,validate,newFollower,Follower,process.env.FOLLOWSHEET || '')
 }

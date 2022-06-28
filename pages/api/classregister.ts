@@ -27,5 +27,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     email:req.body.email,
     detail:req.body.detail  
   }
-  await collectResponse(serv,validate,newRegistrant,Registrant,process.env.CLASSSHEET)
+  await collectResponse(serv,validate,newRegistrant,Registrant,process.env.CLASSSHEET || '')
 }

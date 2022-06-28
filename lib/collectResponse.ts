@@ -1,7 +1,11 @@
+import { ValidateFunction } from 'ajv'
+import mongoose from 'mongoose'
+import { NextApiRequest, NextApiResponse } from 'next'
 import dbConnect from './db.js'
 import { appendToSheet } from './sheet.js'
 
-export default async function handler(serv,validate,data,Model,sheet) {
+
+export default async function handler(serv:{ req: NextApiRequest ,res: NextApiResponse } ,validate: ValidateFunction, data: any, Model: typeof mongoose.Model,sheet: string) {
   try{
     let body = serv.req.body
     if (serv.req.method == 'POST'){
@@ -14,8 +18,8 @@ export default async function handler(serv,validate,data,Model,sheet) {
         const a = await Model.create(data)
         data.createdAt = a.createdAt
         data.id = a._id
-        const sheetarr = Object.values(data)
-        await appendToSheet(process.env.SHEETID,`${sheet}!A2:${sheetarr.length}`,Object.values(sheetarr))
+        const sheetarr: string[] = Object.values(data)
+        await appendToSheet(process.env.SHEETID || '',`${sheet}!A2:${sheetarr.length}`,Object.values(sheetarr))
         serv.res.status(200).json({ success: true, data })
       }
   
