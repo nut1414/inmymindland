@@ -4,6 +4,7 @@ import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
 import clientPromise from "../../../utils/database/mongodb"
 import User from "../../../models/User"
 import { NextAuthOptions } from "next-auth"
+import dbConnect from "../../../utils/database/db"
 
 export const authOptions: NextAuthOptions = {
   adapter: MongoDBAdapter(clientPromise),
@@ -23,18 +24,18 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks:{
     async signIn({ user, account, profile, email, credentials }) {
-      console.log(user)
-      console.log(account)
-      console.log(profile)
-      console.log(credentials)
 
       return true
     },
   },
   events:{
-    /*async createUser({ user }){
-      //console.log(User.findById(user.id))
-    }*/
+    async createUser({ user }){
+      await dbConnect()
+      const userDoc = await User.findById(user.id)
+      userDoc.contact = { name: user.name, email: user.email }
+      userDoc.worker = { name: user.name, email: user.email, image: user.image }
+      await userDoc.save()
+    }
   }
 
 }
