@@ -1,7 +1,7 @@
-import TutorTask from '../../models/survey/TutorTask.js'
+import TutorTask from '../../models/survey/TutorTask'
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
-import collectResponse from '../../lib/collectResponse.js'
+import collectResponse from '../../utils/collectResponse'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 const ajv = new Ajv({ allErrors:true })

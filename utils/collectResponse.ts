@@ -1,7 +1,7 @@
 import { ValidateFunction } from 'ajv'
 import mongoose from 'mongoose'
 import { NextApiRequest, NextApiResponse } from 'next'
-import dbConnect from './db.js'
+import dbConnect from './database/db.js'
 import { appendToSheet } from './sheet.js'
 
 

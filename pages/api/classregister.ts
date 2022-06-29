@@ -1,7 +1,7 @@
-import Registrant from '../../models//surveyRegistrant.js'
+import Registrant from '../../models/survey/Registrant'
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
-import collectResponse from '../../lib/collectResponse.js'
+import collectResponse from '../../utils/collectResponse'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 const ajv = new Ajv({ allErrors:true })
