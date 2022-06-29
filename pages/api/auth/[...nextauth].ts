@@ -1,10 +1,11 @@
 import NextAuth from "next-auth/next"
 import GoogleProvider from "next-auth/providers/google"
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
-import clientPromise from "../../../lib/mongodb"
+import clientPromise from "../../../utils/database/mongodb"
 import User from "../../../models/User"
+import { NextAuthOptions } from "next-auth"
 
-export default NextAuth({
+export const authOptions: NextAuthOptions = {
   adapter: MongoDBAdapter(clientPromise),
   providers: [
     GoogleProvider({
@@ -31,10 +32,11 @@ export default NextAuth({
     },
   },
   events:{
-    async createUser({ user }){
+    /*async createUser({ user }){
       //console.log(User.findById(user.id))
-    }
+    }*/
   }
 
-} 
-)
+}
+
+export default NextAuth(authOptions)
