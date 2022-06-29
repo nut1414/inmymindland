@@ -1,6 +1,15 @@
 import mongoose from 'mongoose'
 
-const jobListingSchema = new mongoose.Schema({
+export interface IJobListing {
+  name?: string
+  description?: string
+  worker?: mongoose.Types.ObjectId
+  pricing?: string
+  type?: string
+  tags?: string[]
+}
+
+const jobListingSchema = new mongoose.Schema<IJobListing>({
   name: { type: String },
   description: { type: String },
   worker: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
