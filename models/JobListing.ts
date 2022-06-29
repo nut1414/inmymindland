@@ -12,7 +12,7 @@ export interface IJobListing {
 const jobListingSchema = new mongoose.Schema<IJobListing>({
   name: { type: String },
   description: { type: String },
-  worker: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  worker: { type: mongoose.Schema.Types.ObjectId, ref: 'UserInfo' },
   pricing: { type: String },
   type: { type: String },
   tags: [ String ],

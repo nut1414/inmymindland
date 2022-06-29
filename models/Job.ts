@@ -15,8 +15,8 @@ const jobSchema = new mongoose.Schema<IJob>({
   name: { type: String },
   description: { type: String },
   status: { type: String },
-  hirer: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  worker: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  hirer: { type: mongoose.Schema.Types.ObjectId, ref: 'UserInfo' },
+  worker: { type: mongoose.Schema.Types.ObjectId, ref: 'UserInfo' },
   chat: { type: mongoose.Schema.Types.ObjectId, ref: 'Chatroom' },
   price: { type: String },
   type: { type: String }

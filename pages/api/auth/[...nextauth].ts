@@ -1,10 +1,10 @@
 import NextAuth from "next-auth/next"
 import GoogleProvider from "next-auth/providers/google"
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
-import clientPromise from "../../../utils/database/mongodb"
-import User from "../../../models/User"
+import clientPromise from "../../../utils/database/mongodbConnect"
+import UserInfo from "../../../models/UserInfo"
 import { NextAuthOptions } from "next-auth"
-import dbConnect from "../../../utils/database/db"
+import mongooseConnect from "../../../utils/database/mongooseConnect"
 
 export const authOptions: NextAuthOptions = {
   adapter: MongoDBAdapter(clientPromise),
@@ -23,18 +23,24 @@ export const authOptions: NextAuthOptions = {
     // newUser: '', // If set, new users will be directed here on first sign in
   },
   callbacks:{
-    async signIn({ user, account, profile, email, credentials }) {
+    /*async signIn({ user, account, profile, email, credentials }) {
 
       return true
-    },
+    },*/
   },
   events:{
     async createUser({ user }){
-      await dbConnect()
-      const userDoc = await User.findById(user.id)
-      userDoc.contact = { name: user.name, email: user.email }
-      userDoc.worker = { name: user.name, email: user.email, image: user.image }
-      await userDoc.save()
+      await mongooseConnect()
+      const userDoc = await UserInfo.create({
+        userid: user.id,
+        contact:{ 
+                  name: user.name, email: user.email 
+                },
+        worker: {
+                  name: user.name, email: user.email, image: user.image
+                }
+      })
+      console.log(userDoc)
     }
   }
 
