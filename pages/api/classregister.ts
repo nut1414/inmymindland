@@ -1,4 +1,4 @@
-import Registrant from '../../models/Registrant.js'
+import Registrant from '../../models//surveyRegistrant.js'
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
 import collectResponse from '../../lib/collectResponse.js'

@@ -1,4 +1,4 @@
-import TutorTask from '../../models/TutorTask.js'
+import TutorTask from '../../models/survey/TutorTask.js'
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
 import collectResponse from '../../lib/collectResponse.js'

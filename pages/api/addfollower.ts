@@ -1,4 +1,4 @@
-import Follower from '../../models/Follower.js'
+import Follower from '../../models/survey/Follower.js'
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
 import collectResponse from '../../lib/collectResponse.js'
