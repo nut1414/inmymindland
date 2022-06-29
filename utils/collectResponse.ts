@@ -1,15 +1,15 @@
 import { ValidateFunction } from 'ajv'
 import mongoose from 'mongoose'
 import { NextApiRequest, NextApiResponse } from 'next'
-import dbConnect from './database/db.js'
-import { appendToSheet } from './sheet.js'
+import mongooseConnect from './database/mongooseConnect'
+import { appendToSheet } from './sheet'
 
 
 export default async function handler(serv:{ req: NextApiRequest ,res: NextApiResponse } ,validate: ValidateFunction, data: any, Model: typeof mongoose.Model,sheet: string) {
   try{
     let body = serv.req.body
     if (serv.req.method == 'POST'){
-      await dbConnect()
+      await mongooseConnect()
       const valid = validate(body)
 
       if (!valid){

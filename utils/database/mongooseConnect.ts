@@ -26,7 +26,7 @@ global.mongooseconn = global.mongooseconn || { conn: null }
 const cached: IMongoConnection = global.mongooseconn
 
 
-export default async function dbConnect() {
+export default async function mongooseConnect() {
   try {
     if (!cached.conn) {
       console.log('Connecting to MongoDb..')
