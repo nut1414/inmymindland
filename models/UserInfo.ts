@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import User, { IUser } from './User'
 
 export interface IContact {
   name?: string
@@ -19,11 +20,15 @@ export interface IWorker {
 }
 
 export interface IUserInfo {
-  userid?: mongoose.Types.ObjectId
+  user?: mongoose.Types.ObjectId
   contact?: IContact,
   worker?: IWorker,
   type?: 'user' | 'worker' | 'admin',
   chat?: mongoose.Types.ObjectId[]
+}
+
+interface UserInfoModel extends mongoose.Model<IUserInfo> {
+  findByUserId(userid: string): Promise<any>
 }
 
 const contactSchema = new mongoose.Schema<IContact>({
@@ -45,11 +50,38 @@ const workerSchema = new mongoose.Schema<IWorker>({
 })
 
 const userInfoSchema = new mongoose.Schema<IUserInfo>({
-  userid: { type:mongoose.Schema.Types.ObjectId, ref: 'User' },
+  user: { type:mongoose.Schema.Types.ObjectId, ref: 'User' },
   contact: contactSchema,
   worker: workerSchema,
   type: { type: String, enum: ['user','worker','admin'], default: 'user' },
   chat: [ { type:mongoose.Schema.Types.ObjectId, ref: 'Chatroom' } ]
 }, { timestamps: true })
 
-export default mongoose.models.UserInfo || mongoose.model('UserInfo',userInfoSchema)
+
+
+userInfoSchema.static('findByUserId',async function( userid: string ) {
+  let userinfo = await this.findOne({user:userid}).populate('user')
+  if (!userinfo){
+    // will turn this into static later
+      await User.findById(userid).then(async (user)=>{
+      if (!user) return
+      else {userinfo = await this.create(
+        {
+          user: new mongoose.Types.ObjectId(userid),
+          contact:{ 
+                    name: user.name, email: user.email 
+                  },
+          worker: {
+                    name: user.name, email: user.email, image: user.image
+                  }
+        }
+      )
+      userinfo.user = user
+    }
+    })
+  }
+  return userinfo
+})
+
+export default mongoose.models.UserInfo as UserInfoModel 
+            || mongoose.model<IUserInfo,UserInfoModel>('UserInfo',userInfoSchema)

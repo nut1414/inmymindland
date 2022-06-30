@@ -1,17 +1,15 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next'
-import { Session } from 'next-auth'
+import { NextApiRequestWithMiddleware } from './index'
 import { getServerSession } from 'next-auth/next'
-import { authOptions } from '../../pages/api/auth/[...nextauth]'
+import { authOptions, HydratedSession } from '../../pages/api/auth/[...nextauth]'
 
-export type NextApiRequestWithSession = NextApiRequest & {
-  session?: Session | null
-} 
 
-export const protectedApi = (handler: NextApiHandler) => async (req: NextApiRequestWithSession, res: NextApiResponse) => {
-  req.session = await getServerSession({req,res}, authOptions)
-  if (req.session){
+
+export const protectedApi = (handler: NextApiHandler) => async (req: NextApiRequestWithMiddleware, res: NextApiResponse) => {
+  req.session = await getServerSession({req,res}, authOptions) as HydratedSession || {} as HydratedSession
+  if (req.session.id){
     return handler(req, res)
   }else {
-    res.status(401).json({error: 'unauthorized'})
+    res.status(401).json({status:'error', error: 'unauthorized'})
   }
 }

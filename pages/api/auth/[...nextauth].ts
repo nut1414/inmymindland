@@ -3,8 +3,13 @@ import GoogleProvider from "next-auth/providers/google"
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
 import clientPromise from "../../../utils/database/mongodbConnect"
 import UserInfo from "../../../models/UserInfo"
-import { NextAuthOptions } from "next-auth"
+import { NextAuthOptions, Session } from "next-auth"
 import mongooseConnect from "../../../utils/database/mongooseConnect"
+import mongoose from "mongoose"
+
+export interface HydratedSession extends Session {
+  id: string
+}
 
 export const authOptions: NextAuthOptions = {
   adapter: MongoDBAdapter(clientPromise),
@@ -27,12 +32,17 @@ export const authOptions: NextAuthOptions = {
 
       return true
     },*/
+    async session({ session, token, user }) {
+      // Send properties to the client, like an access_token from a provider.
+      session.id = user.id || ''
+      return session as HydratedSession
+    }
   },
   events:{
     async createUser({ user }){
       await mongooseConnect()
       const userDoc = await UserInfo.create({
-        userid: user.id,
+        userid: new mongoose.Types.ObjectId(user.id),
         contact:{ 
                   name: user.name, email: user.email 
                 },
