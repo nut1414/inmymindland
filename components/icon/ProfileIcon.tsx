@@ -23,10 +23,10 @@ const ProfileIcon = () => {
       >
 
         <Popover.Panel as="div" className="flex flex-col absolute bg-[#282828] w-32 right-4 z-10"> 
-          <button className="text-white w-max" onClick={() => {Session ? signOut() : signIn()}}>{Session ? "sign out" : "sign in"}</button>
+          <button className="text-white w-full bg-red-500" onClick={() => {Session ? signOut() : signIn()}}>{Session ? "sign out" : "sign in"}</button>
           <div>{Session?.user?.name}</div>
           
-          <button className={`text-white ${Session ? "" : "invisible"} w-max`} onClick={() => {router.push('/profile')}}>แก้ไขข้อมูล</button>
+          <button className={`text-white ${Session ? "" : "invisible"} w-full`} onClick={() => {router.push('/profile')}}>แก้ไขข้อมูล</button>
           <div>2</div>
         </Popover.Panel>
       </Transition>
