@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import { nanoid } from 'nanoid'
 
 interface IMessage {
   sender?: mongoose.Types.ObjectId
@@ -9,7 +10,7 @@ interface IMessage {
 
 interface IChatroom {
   name?: string
-  chatId?: string
+  uid?: string
   messages?: IMessage[]
 }
 
@@ -21,8 +22,8 @@ const messagesSchema = new mongoose.Schema<IMessage>({
 })
 
 const chatroomSchema = new mongoose.Schema<IChatroom>({
-  name: { type: String },
-  chatId: { type: String, default: '0' },
+  name: { type: String, default: 'Chatroom' },
+  uid: { type: String, default: () => nanoid() },
   messages: [ { type: messagesSchema } ]
 }, {timestamps: true} )
 
