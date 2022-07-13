@@ -7,19 +7,17 @@ export interface IJobListing {
   name?: string
   description?: string
   worker?: mongoose.Types.ObjectId
-  pricing?: string
-  type?: string
+  price?: string
   tags?: string[]
 }
 
 const jobListingSchema = new mongoose.Schema<IJobListing>({
   uid: { type: String, default: () => nanoid() },
-  status: { type: String, default: '' },
+  status: { type: String, default: '',  enum: ['draft', 'publish'] },
   name: { type: String, default: '' },
   description: { type: String, default: '' },
   worker: { type: mongoose.Schema.Types.ObjectId, ref: 'UserInfo' },
-  pricing: { type: String, default: '' },
-  type: { type: String, default: '' },
+  price: { type: String, default: '' },
   tags: [ String ],
 }, { timestamps: true })
 
