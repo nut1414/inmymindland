@@ -7,7 +7,7 @@ export interface IJobListing {
   name?: string
   description?: string
   worker?: mongoose.Types.ObjectId
-  price?: string
+  price?: number
   tags?: string[]
 }
 
@@ -17,7 +17,7 @@ const jobListingSchema = new mongoose.Schema<IJobListing>({
   name: { type: String, default: '' },
   description: { type: String, default: '' },
   worker: { type: mongoose.Schema.Types.ObjectId, ref: 'UserInfo' },
-  price: { type: String, default: '' },
+  price: { type: Number, default: '' },
   tags: [ String ],
 }, { timestamps: true })
 
