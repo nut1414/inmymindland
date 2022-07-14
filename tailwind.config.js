@@ -10,6 +10,9 @@ module.exports = {
       fontFamily: {
       Kanit: ["'Kanit'", 'sans-serif']
       },
+      colors: {
+        'originalBlue': '#0080FF',
+      },
     },
   },
   plugins: [],
