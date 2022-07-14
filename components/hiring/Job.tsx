@@ -1,39 +1,67 @@
+import { trusted } from "mongoose";
 import Image from "next/image";
 import Link from "next/link";
 
-type JobProps = {
-  id: string,
-  image: string,
-  price: number,
-  worker: string,
+export type TagInfo = {
+  id: number
   name: string
 }
 
-const Job = ({id, image, price, worker, name}: JobProps) => {
+export interface IJob {
+  uid: string,
+  price: number,
+  worker: string,
+  workerimage: string,
+  tags: TagInfo[],
+  name: string,
+  description?: string,
+}
+
+const colorTag = (tagName: string) => {
+  const dict: any = {
+    'ฟิสิกส์': 'text-red-300',
+    'HW': 'text-green-500'
+  }
+  return dict[tagName] || 'text-gray-700'
+}
+
+const Job = ({jobInfo}: {jobInfo: IJob}) => {
+  let i = 0;
   return (
-    <>
-    <div className="text-center box-content h-[24rem] w-[22rem] bg-[#404040] text-white py-8 rounded-md overflow-hidden transition hover:scale-[1.1] drop-shadow hover:z-50">
-        <Image className="rounded-md place-items-center" src={image} width={256} height={256} alt={id}/>
+    <div className="flex flex-col gap-2">
+    <div className="text-center box-content h-[9rem] w-[12rem] bg-[#0080FF] text-white pb-8 py-4 rounded-md overflow-hidden transition drop-shadow ">
         <div className="flex flex-col">
-          <div className="break-all h-10">
-            {name}
+          <div className="bg-white rounded-md px-4  text-black pt-2 pb-1 mx-4">
+            <div className="text-center font-semibold text-2xl">{jobInfo.price}</div>
+            <div className=" text-right font-medium text-xl">บาท</div>
           </div>
-          <div className="flex flex-col text-left justify-around content-center m-2">
-            <div className=" truncate">
-              {`Hiring by:  ${worker}`}
+          <div className=" flex w-full my-2 gap-2 mx-4 overflow-x-hidden overflow-y-scroll">
+            {jobInfo.tags?.map((tag: TagInfo) => (
+              <div key={jobInfo.uid+i++} className=" bg-black font-light text-xs flex flex-row rounded-full px-3">
+                <div className={colorTag(tag.name)+' mr-2 text-xs '}>•</div>
+                {tag.name}
+              </div>))}
+          </div>
+          <div className="flex flex-row h-full">
+            <div className="flex flex-col w-3/4">
+              <div className="ml-4 text-left text-xl truncate">{jobInfo.name}</div>
+              <div className="ml-4 text-left text-base truncate">{jobInfo.description}</div>
             </div>
-            <div>
-              {`price: ${price} Baht`}
+            <div className="flex flex-col w-1/4">
+              <Image src={jobInfo.workerimage} alt={jobInfo.name} width={20} height={20} layout="fixed" className="rounded-full place-self-end mt-auto"/>
+              <div className="text-xs text-right mr-4">{'โดย ' + jobInfo.worker}</div>
             </div>
           </div>
-          <button className="h-[3.25rem] text-center bg-[#282828] ">
-            <Link href={`/hiring/${id}`} passHref={true}>
-              รายละเอียดเพิ่มเติม
-            </Link>
-          </button>
         </div>
       </div>
-    </>
+      <button className=" place-self-center bg-black text-white w-max rounded-full px-2 text-base">จ้างงาน</button>
+      <button className=" place-self-center place-items-center text-base text-originalBlue flex flex-row gap-1">
+        <Link href={`/hiring/${jobInfo.uid}`} passHref={true}>
+          <p className="underline text-xs">ดูเพิ่มเติม</p>
+        </Link>
+        <p>{'>'}</p>
+      </button>
+    </div>
   );
 };
 

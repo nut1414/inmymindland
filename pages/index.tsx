@@ -36,11 +36,30 @@ export default function Home() {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <Template>
-        <div className="text-white text-3xl text-center mt-12">
-          <p>หิวข้าวมากเลยครับ </p>
-          <p>อยากจะยืมตังพี่ซัก5000ได้มั้ยนะ จุ๊บๆ</p>
-          <p>อีกบรรทัดคิดบ่ออก แย่จุง</p>
+        <div className="flex flex-col gap-8 text-center text-2xl my-8 place-content-center">
+          <div className="">คำอธิบายเกี่ยวกับเว็ปไซต์</div>
+          <div>คำอธิบายเกี่ยวกับเว็ปไซต์คำอธิบายเกี่ยวกับเว็ปไซต์</div>
+          <div className="flex flex-row place-content-center gap-4">
+            <div className="bg-[#D9D9D9] px-8 py-2">ATC</div>
+            <div className="bg-[#D9D9D9] px-8 py-2">ATC</div>
+          </div>
         </div>
+        <div className=" border-y border-black place-content-center flex flex-col text-center text-2xl pt-4 pb-8 gap-4 my-8">
+          <div>Our Service</div>
+          <div className="flex flex-row place-content-center justify-items-center gap-32">
+            <div className="flex flex-row place-items-center w-1/4"> 
+              <Image src="/mock/circle.png" alt="about1" width="100" height="100"/>
+              <div >This website is about.................................................</div>
+            </div>
+            <div className="flex flex-row place-items-center w-1/4 gap-32"> 
+              <Image src="/mock/circle.png" alt="about2" width="100" height="100"/>
+              <div>This website is about</div>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-row place-content-center my-8">
+            <Image src="/mock/Rectangle.png" alt="POV1" width="700" height="500"/>
+          </div>
       </Template>
     </div>
   );

@@ -28,7 +28,7 @@ export default function SignIn({ providers }: SignInProps) {
         <title>Sign In | Inmymind</title>
       </Head>
       <Template>
-        <div className="flex place-content-center h-[92vh]">
+        <div className="flex place-content-center h-[92vh] drop-shadow-xl">
           <div className="flex flex-col container max-w-md text-center bg-white p-5 m-auto">
             <div className="text-4xl m-3">
               Sign in

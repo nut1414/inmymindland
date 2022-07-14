@@ -4,7 +4,7 @@ import Head from "next/head";
 
 const Aboutus = () => {
   return(
-    <div className="bg-[#181818] relative font-Kanit">
+    <div className="bg-[#F5F5F5] relative font-Kanit">
       <Head>
         <title>Extral Class | Inmymind</title>
       </Head>
