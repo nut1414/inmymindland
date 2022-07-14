@@ -6,7 +6,7 @@ export interface IJobListing {
   status?: string
   name?: string
   description?: string
-  worker?: mongoose.Types.ObjectId
+  user?: mongoose.Types.ObjectId
   price?: number
   tags?: string[]
 }
@@ -16,7 +16,7 @@ const jobListingSchema = new mongoose.Schema<IJobListing>({
   status: { type: String, default: '',  enum: ['draft', 'publish'] },
   name: { type: String, default: '' },
   description: { type: String, default: '' },
-  worker: { type: mongoose.Schema.Types.ObjectId, ref: 'UserInfo' },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'UserInfo' },
   price: { type: Number, default: '' },
   tags: [ String ],
 }, { timestamps: true })
