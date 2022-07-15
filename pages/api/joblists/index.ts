@@ -16,6 +16,7 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
   const session = (req.session) ? req.session : {} as HydratedSession 
   const user = await UserInfo.findByUserId(session.id)
   const { page, tags, min, max, s } = req.query
+  const pagenum = parseInt(page as string) || 1
   const pricemin = parseInt(min as string)
   const pricemax = parseInt(max as string)
   try{
@@ -34,7 +35,7 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
         query.price['$gte'] = clamp(pricemin, 0, 20000)
       }
 
-      const joblist = await JobListing.find(query,{},{limit: 25, skip:clamp((+page-1)*25, 0, 2000)})
+      const joblist = await JobListing.find(query,{},{limit: 25, skip:clamp((pagenum-1)*25, 0, 2000)})
       const jobcount = await JobListing.find(query).countDocuments()
       res.status(200).json({
         result: joblist,
