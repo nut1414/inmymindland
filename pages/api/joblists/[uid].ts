@@ -21,8 +21,8 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
         res.status(404).json({status:'error', error: 'not found'})
       }
 
-    }else if (user.type === 'worker' || 
-              user.type === 'admin'){
+    }else if (user.role === 'worker' || 
+              user.role === 'admin'){
       if (req.method === 'PATCH'){
         const changes = {
           status: req.body.status,

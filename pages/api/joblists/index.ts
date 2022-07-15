@@ -40,8 +40,8 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
         result: joblist,
         total: jobcount
       })
-    }else if (user.type === 'worker' || 
-              user.type === 'admin'){
+    }else if (user.role === 'worker' || 
+              user.role === 'admin'){
       if (req.method === 'POST'){
         const newlisting = await JobListing.create({
           status: req.body.status,
