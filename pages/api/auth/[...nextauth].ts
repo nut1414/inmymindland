@@ -40,7 +40,10 @@ export const authOptions: NextAuthOptions = {
     },*/
     async session({ session, token, user }) {
       // Send properties to the client, like an access_token from a provider.
+      await mongooseConnect()
       session.id = user.id || ''
+      const userdata = await UserInfo.findOne({user: user.id})
+      session.role = userdata?.role || 'user'
       return session as HydratedSession
     }
   },
@@ -48,7 +51,7 @@ export const authOptions: NextAuthOptions = {
     async createUser({ user }){
       await mongooseConnect()
       const userDoc = await UserInfo.create({
-        userid: new mongoose.Types.ObjectId(user.id),
+        user: new mongoose.Types.ObjectId(user.id),
         contact:{ 
                   name: user.name, email: user.email 
                 },
