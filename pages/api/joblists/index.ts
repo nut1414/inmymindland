@@ -19,6 +19,7 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
   const pagenum = parseInt(page as string) || 1
   const pricemin = parseInt(min as string)
   const pricemax = parseInt(max as string)
+  console.log(typeof req.body)
   try{
     if (req.method === 'GET'){
       let query: ListingDbQuery = {}
@@ -52,12 +53,12 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
           price: req.body.price,
           tags: req.body.tags
         },)
-        res.status(200).json({status:'ok', lists: newlisting})
+        res.status(200).json({status:'ok', listing: newlisting})
       } else {
         res.status(405).json({status:'error', error: 'method not allowed'})
       }
     }else {
-      res.status(401).json({status:'error', error: 'unauthorized'})
+      res.status(405).json({status:'error', error: 'method not allowed'})
     }
   }catch (e: unknown){
     console.log(e)

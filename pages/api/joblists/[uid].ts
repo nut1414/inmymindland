@@ -46,7 +46,11 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
           res.status(404).json({status:'error', error: 'not found'})
         }
 
+      }else{
+        res.status(405).json({status:'error', error: 'method not allowed'})
       }
+    }else{
+      res.status(405).json({status:'error', error: 'method not allowed'})
     }
   }catch (e: unknown){
     console.log(e)
