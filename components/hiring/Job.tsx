@@ -48,7 +48,7 @@ const Job = ({jobInfo}: {jobInfo: IJob}) => {
               <div className="ml-4 text-left text-base truncate">{jobInfo.description}</div>
             </div>
             <div className="flex flex-col w-1/4">
-              <Image src={jobInfo.workerimage} alt={jobInfo.name} width={20} height={20} layout="fixed" className="rounded-full place-self-end mt-auto"/>
+              <img src={jobInfo.workerimage} alt={jobInfo.name} width={20} height={20} className="rounded-full place-self-end mt-auto"/>
               <div className="text-xs text-right mr-4">{'โดย ' + jobInfo.worker}</div>
             </div>
           </div>
