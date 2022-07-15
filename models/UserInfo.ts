@@ -23,7 +23,7 @@ export interface IUserInfo {
   user?: mongoose.Types.ObjectId
   contact?: IContact,
   worker?: IWorker,
-  type?: 'user' | 'worker' | 'admin',
+  role?: 'user' | 'worker' | 'admin',
   chat?: mongoose.Types.ObjectId[]
 }
 
@@ -53,7 +53,7 @@ const userInfoSchema = new mongoose.Schema<IUserInfo>({
   user: { type:mongoose.Schema.Types.ObjectId, ref: 'User' },
   contact: contactSchema,
   worker: workerSchema,
-  type: { type: String, enum: ['user','worker','admin'], default: 'user' },
+  role: { type: String, enum: ['user','worker','admin'], default: 'user' },
   chat: [ { type:mongoose.Schema.Types.ObjectId, ref: 'Chatroom' } ]
 }, { timestamps: true })
 
