@@ -22,7 +22,6 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
   try{
     if (req.method === 'GET'){
       let query: ListingDbQuery = {}
-
       if (typeof s === 'string') {
         query.name = { '$regex': s, '$options': 'i'}
       }
@@ -46,6 +45,7 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
       if (req.method === 'POST'){
         const newlisting = await JobListing.create({
           status: req.body.status,
+          image: req.body.image,
           name: req.body.name,
           description: req.body.description,
           worker: user.id,
