@@ -19,7 +19,6 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
   const pagenum = parseInt(page as string) || 1
   const pricemin = parseInt(min as string)
   const pricemax = parseInt(max as string)
-  console.log(typeof req.body)
   try{
     if (req.method === 'GET'){
       let query: ListingDbQuery = {}
@@ -49,7 +48,7 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
           image: req.body.image,
           name: req.body.name,
           description: req.body.description,
-          worker: user.id,
+          user: session.id,
           price: req.body.price,
           tags: req.body.tags
         },)

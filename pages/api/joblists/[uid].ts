@@ -12,6 +12,7 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
   const user = await UserInfo.findByUserId(session.id)
   const { uid } = req.query 
   
+  
   try{
     if(req.method === 'GET'){
       const listing = await JobListing.findOne({uid}).populate('user','worker')
@@ -31,7 +32,11 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
           price: req.body.price,
           tags: req.body.tags
         }
-        const listing = await JobListing.findOneAndUpdate({uid, user: user._id},changes,{new:true})
+        const query: {uid:string, user?:string} = {uid} as { uid: string }
+        if(user.role === 'worker'){
+          query.user = session.id
+        }
+        const listing = await JobListing.findOneAndUpdate(query,changes,{new:true})
         if (listing){
           res.status(200).json({status:'ok', listing})
         }else{
@@ -39,7 +44,11 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
         }
 
       }else if (req.method === 'DELETE'){
-        const listing = await JobListing.findOneAndDelete({uid, user: user._id})
+        const query: {uid:string, user?:string} = {uid} as { uid: string }
+        if(user.role === 'worker'){
+          query.user = session.id
+        }
+        const listing = await JobListing.findOneAndDelete(query)
         if (listing){
           res.status(200).json({status:'ok', listing})
         }else{
