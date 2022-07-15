@@ -40,12 +40,8 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
         result: joblist,
         total: jobcount
       })
-    }else {
-      res.status(405).json({status:'error', error: 'method not allowed'})
-    }
-    if (user.type === 'worker' || 
-        user.type === 'admin'){
-          
+    }else if (user.type === 'worker' || 
+              user.type === 'admin'){
       if (req.method === 'POST'){
         const newlisting = await JobListing.create({
           status: req.body.status,
