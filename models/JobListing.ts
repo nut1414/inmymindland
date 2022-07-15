@@ -14,7 +14,7 @@ export interface IJobListing {
 
 const jobListingSchema = new mongoose.Schema<IJobListing>({
   uid: { type: String, default: () => nanoid() },
-  status: { type: String, default: '',  enum: ['draft', 'publish'] },
+  status: { type: String, default: '',  enum: ['draft', 'published'] },
   image: { type: String, default: '/temp.jpg' },
   name: { type: String, default: '' },
   description: { type: String, default: '' },
