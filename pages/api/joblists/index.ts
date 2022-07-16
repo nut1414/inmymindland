@@ -10,12 +10,13 @@ interface ListingDbQuery {
   name ?: { '$regex'?: string, '$options'?: string } | string
   tags ?: { '$in'?: string[], '$exists'?: boolean }
   price ?: { '$lte'?: number, '$gte'?: number }
+  user ?: string
 }
 
 async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) {
   const session = (req.session) ? req.session : {} as HydratedSession 
   const user = await UserInfo.findByUserId(session.id)
-  const { page, tags, min, max, s } = req.query
+  const { page, tags, min, max, s, userid } = req.query
   const pagenum = parseInt(page as string) || 1
   const pricemin = parseInt(min as string)
   const pricemax = parseInt(max as string)
@@ -24,6 +25,9 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
       let query: ListingDbQuery = {}
       if (typeof s === 'string') {
         query.name = { '$regex': s, '$options': 'i'}
+      }
+      if (typeof userid === 'string') {
+        query.user = userid
       }
       if (tags instanceof Array){
         query.tags = tags.length ? { "$in": tags } : { "$exists": true }

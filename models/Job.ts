@@ -4,6 +4,7 @@ interface IJob {
   uid?: string
   name?: string
   description?: string
+  listing?: mongoose.Types.ObjectId
   hirer?: mongoose.Types.ObjectId
   worker?: mongoose.Types.ObjectId
   chat?: mongoose.Types.ObjectId 
@@ -18,6 +19,7 @@ const jobSchema = new mongoose.Schema<IJob>({
   name: { type: String, default: '' },
   description: { type: String, default: '' },
   status: { type: String, default: '' },
+  listing:  { type: mongoose.Schema.Types.ObjectId, ref: 'JobListing' },
   hirer: { type: mongoose.Schema.Types.ObjectId, ref: 'UserInfo' },
   worker: { type: mongoose.Schema.Types.ObjectId, ref: 'UserInfo' },
   chat: { type: mongoose.Schema.Types.ObjectId, ref: 'Chatroom' },
