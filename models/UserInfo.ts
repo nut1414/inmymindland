@@ -11,12 +11,9 @@ export interface IContact {
 }
 
 export interface IWorkerProfile {
-  verified?: boolean
   name?:  string
-  email?: string
   image?: string
   description?: string
-  phone?: string
 }
 
 export interface IUserInfo {

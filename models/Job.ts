@@ -3,28 +3,23 @@ import { nanoid } from 'nanoid'
 interface IJob {
   uid?: string
   name?: string
-  description?: string
   listing?: mongoose.Types.ObjectId
-  hirer?: mongoose.Types.ObjectId
-  worker?: mongoose.Types.ObjectId
+  hirerinfo?: mongoose.Types.ObjectId
+  workerinfo?: mongoose.Types.ObjectId
   chat?: mongoose.Types.ObjectId 
   status?: string
-  price?: string
-  type?: string
-  tags?: string[]
+  price?: number
 }
 
 const jobSchema = new mongoose.Schema<IJob>({
   uid: { type: String, default: () => nanoid() },
   name: { type: String, default: '' },
-  description: { type: String, default: '' },
-  status: { type: String, default: '' },
+  status: { type: String, enum: ['unconfirmed','confirmed','paid','done'], default: 'unconfirmed' },
   listing:  { type: mongoose.Schema.Types.ObjectId, ref: 'JobListing' },
-  hirer: { type: mongoose.Schema.Types.ObjectId, ref: 'UserInfo' },
-  worker: { type: mongoose.Schema.Types.ObjectId, ref: 'UserInfo' },
+  hirerinfo: { type: mongoose.Schema.Types.ObjectId, ref: 'UserInfo' },
+  workerinfo: { type: mongoose.Schema.Types.ObjectId, ref: 'UserInfo' },
   chat: { type: mongoose.Schema.Types.ObjectId, ref: 'Chatroom' },
-  price: { type: String, default: '' },
-  type: { type: String, default: '' }
+  price: { type: Number, default: 0 },
 }, { timestamps: true })
 
 export default mongoose.models.Job || mongoose.model('Job',jobSchema)
