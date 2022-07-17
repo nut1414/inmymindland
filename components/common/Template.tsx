@@ -4,14 +4,15 @@ import Link from "next/link"
 
 type TemplateProps = {
   children?: React.ReactNode,
-  className?: string
+  className?: string,
+  bgColor?: string
 }
 
-const Template = ({children, className}: TemplateProps) => {
+const Template = ({children, className, bgColor}: TemplateProps) => {
   return (
-    <div className="bg-white relative font-Kanit w-screen">
+    <div className={`${bgColor || "bg-[#F5F5F5]"} relative font-Kanit w-screen`}>
       <div className="sticky top-0 z-50">
-        <NavBar/>
+        <NavBar bgColor={bgColor}/>
       </div>
       <div className={className + ' place-content-center'}>
         {children}
