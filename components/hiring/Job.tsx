@@ -19,10 +19,10 @@ export interface IJob {
 
 const colorTag = (tagName: string) => {
   const dict: any = {
-    'ฟิสิกส์': 'text-red-300',
-    'HW': 'text-green-500'
+    'ฟิสิกส์': 'bg-red-300',
+    'HW': 'bg-green-500'
   }
-  return dict[tagName] || 'text-gray-700'
+  return dict[tagName] || 'bg-gray-700'
 }
 
 const Job = ({jobInfo}: {jobInfo: IJob}) => {
