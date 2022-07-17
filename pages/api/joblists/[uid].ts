@@ -15,7 +15,9 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
   
   try{
     if(req.method === 'GET'){
-      const listing = await JobListing.findOne({uid}).populate('user','worker')
+      const listing = await JobListing.findOne({uid}).populate('userinfo',[
+        'worker_profile', 'user'
+      ])
       if (listing){
         res.status(200).json({status:'ok', listing})
       }else{

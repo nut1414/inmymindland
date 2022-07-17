@@ -55,8 +55,8 @@ export const authOptions: NextAuthOptions = {
         contact:{ 
                   name: user.name, email: user.email 
                 },
-        worker: {
-                  name: user.name, email: user.email, image: user.image
+        worker_profile: {
+                  name: user.name, image: user.image
                 }
       })
       console.log(userDoc)

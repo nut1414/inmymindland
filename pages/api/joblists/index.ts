@@ -39,7 +39,9 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
         query.price['$gte'] = clamp(pricemin, 0, 20000)
       }
 
-      const joblist = await JobListing.find(query,{},{limit:clamp(limit,1,100), skip:clamp((pagenum-1)*limit, 0, 2000)})
+      const joblist = await JobListing.find(query,{},{limit:clamp(limit,1,100), skip:clamp((pagenum-1)*limit, 0, 2000)}).populate('userinfo',[
+        'worker_profile', 'user'
+      ])
       const jobcount = await JobListing.find(query).countDocuments()
       res.status(200).json({
         result: joblist,
@@ -51,12 +53,13 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
     }else if (user.role === 'worker' || 
               user.role === 'admin'){
       if (req.method === 'POST'){
+        console.log(user)
         const newlisting = await JobListing.create({
           status: req.body.status,
           image: req.body.image,
           name: req.body.name,
           description: req.body.description,
-          user: session.id,
+          userinfo: user.id,
           price: req.body.price,
           tags: req.body.tags
         },)

@@ -10,7 +10,7 @@ export interface IContact {
   education?: string,
 }
 
-export interface IWorker {
+export interface IWorkerProfile {
   verified?: boolean
   name?:  string
   email?: string
@@ -22,7 +22,7 @@ export interface IWorker {
 export interface IUserInfo {
   user?: mongoose.Types.ObjectId
   contact?: IContact,
-  worker?: IWorker,
+  worker_profile?: IWorkerProfile,
   role?: 'user' | 'worker' | 'admin',
   chat?: mongoose.Types.ObjectId[]
 }
@@ -40,19 +40,16 @@ const contactSchema = new mongoose.Schema<IContact>({
   education: { type: String, default: '' },
 })
 
-const workerSchema = new mongoose.Schema<IWorker>({
-  verified: { type: Boolean, default: false },
+const workerProfileSchema = new mongoose.Schema<IWorkerProfile>({
   name: { type: String, default: '' },
-  email: { type: String, default: '' },
-  image: { type: String, default: '' },
   description: { type: String, default: '' },
-  phone: { type: String, default: '' }
+  image: { type: String, default: '' },
 })
 
 const userInfoSchema = new mongoose.Schema<IUserInfo>({
   user: { type:mongoose.Schema.Types.ObjectId, ref: 'User' },
   contact: contactSchema,
-  worker: workerSchema,
+  worker_profile: workerProfileSchema,
   role: { type: String, enum: ['user','worker','admin'], default: 'user' },
   chat: [ { type:mongoose.Schema.Types.ObjectId, ref: 'Chatroom' } ]
 }, { timestamps: true })
@@ -71,8 +68,8 @@ userInfoSchema.static('findByUserId',async function( userid: string ) {
           contact:{ 
                     name: user.name, email: user.email 
                   },
-          worker: {
-                    name: user.name, email: user.email, image: user.image
+          worker_profile: {
+                    name: user.name, description: user.description, image: user.image
                   }
         }
       )

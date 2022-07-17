@@ -16,13 +16,16 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
       let userinfo = await UserInfo.findOneAndUpdate({user:session.id},
         {
           contact: req.body.contact || {},
-          worker: req.body.worker || {}
+          worker_profile: req.body.worker || {}
         },
         { new:true }).projection([
           (req.body.contact) ? 'contact' : '',
-          (req.body.worker)  ? 'worker'  : ''
+          (req.body.worker)  ? 'worker_profile'  : ''
         ]).lean()
-      res.status(200).json({status: 'success', userinfo})
+      if (userinfo)
+        res.status(200).json({status: 'success', userinfo})
+      else
+        throw Error('unknown user')
     } else {
       res.status(405).json({status:'error', error: 'method not allowed'})
     }
