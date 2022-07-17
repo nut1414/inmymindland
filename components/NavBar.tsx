@@ -7,7 +7,11 @@ import Logo from "./icon/Logo";
 import MobileBurger from "./MobileBurger";
 import ProfileIcon from "./icon/ProfileIcon";
 
-const NavBar = () => {
+type navbarProp = {
+  bgColor?: string
+}
+
+const NavBar = ({bgColor}: navbarProp) => {
   const { data: Session } = useSession()
   const route = useRouter();
   const pathName = route.pathname;
@@ -19,7 +23,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="bg-white flex flex-row text-xl justify-around medium-tablet:hidden mobile:hidden  big-device:px-64 font-light px-12 rounded-b-sm round mobile:w-full items-center py-4 transition-all duration-500 ease-in-out ">
+      <div className={`${ bgColor || "bg-white"} flex flex-row text-xl justify-around medium-tablet:hidden mobile:hidden  big-device:px-64 font-light px-12 rounded-b-sm round mobile:w-full items-center py-4 transition-all duration-500 ease-in-out `}>
         <Logo/>
         <div className="flex flex-row place-items-center gap-8 ">
           <div className="flex flex-col place-items-center">
