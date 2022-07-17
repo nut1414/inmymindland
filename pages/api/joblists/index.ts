@@ -39,7 +39,7 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
         query.price['$gte'] = clamp(pricemin, 0, 20000)
       }
 
-      const joblist = await JobListing.find(query,{},{limit, skip:clamp((pagenum-1)*limit, 0, 2000)})
+      const joblist = await JobListing.find(query,{},{limit:clamp(limit,1,100), skip:clamp((pagenum-1)*limit, 0, 2000)})
       const jobcount = await JobListing.find(query).countDocuments()
       res.status(200).json({
         result: joblist,
