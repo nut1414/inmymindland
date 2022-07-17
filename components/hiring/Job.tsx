@@ -28,17 +28,17 @@ const colorTag = (tagName: string) => {
 const Job = ({jobInfo}: {jobInfo: IJob}) => {
   let i = 0;
   return (
-    <div className="flex flex-col gap-2">
-    <div className="text-center box-content h-[9rem] w-[12rem] bg-[#0080FF] text-white pb-8 py-4 rounded-md overflow-hidden transition drop-shadow ">
+    <div className="flex flex-col gap-2 ">
+    <div className="text-center box-content h-[11rem] w-[12rem] bg-white text-white pb-8 py-4 rounded-md overflow-hidden transition drop-shadow px-4">
         <div className="flex flex-col">
-          <div className="bg-white rounded-md px-4  text-black pt-2 pb-1 mx-4">
-            <div className="text-center font-semibold text-2xl">{jobInfo.price}</div>
-            <div className=" text-right font-medium text-xl">บาท</div>
-          </div>
-          <div className=" flex w-full my-2 gap-2 mx-4 overflow-x-hidden overflow-y-scroll">
+            <div className="flex flex-col w-3/4">
+              <div className=" text-black text-left text-xl truncate">{jobInfo.name}</div>
+              <div className=" text-black text-left text-base truncate">{jobInfo.description}</div>
+            </div>
+          <div className=" flex w-full my-2 gap-2  overflow-y-hidden overflow-x-scroll">
             {jobInfo.tags?.map((tag: TagInfo) => (
-              <div key={jobInfo.uid+i++} className=" bg-black font-light text-xs flex flex-row rounded-full px-3">
-                <div className={colorTag(tag.name)+' mr-2 text-xs '}>•</div>
+              <div key={jobInfo.uid+i++} className=" bg-black font-light text-xs flex flex-row rounded-full px-3 py-1 place-items-center">
+                <div className={colorTag(tag.name)+' mr-2 text-sm w-3 h-3 rounded-full '}/>
                 {tag.name}
               </div>))}
           </div>
@@ -47,9 +47,9 @@ const Job = ({jobInfo}: {jobInfo: IJob}) => {
               <div className="ml-4 text-left text-xl truncate">{jobInfo.name}</div>
               <div className="ml-4 text-left text-base truncate">{jobInfo.description}</div>
             </div>
-            <div className="flex flex-col w-1/4">
-              <img src={jobInfo.workerimage} alt={jobInfo.name} width={20} height={20} className="rounded-full place-self-end mt-auto"/>
-              <div className="text-xs text-right mr-4">{'โดย ' + jobInfo.worker}</div>
+          <div className="flex flex-col w-1/4">
+            <img src={jobInfo.workerimage} alt={jobInfo.name} width={20} height={20} className="rounded-full place-self-end mt-auto"/>
+            <div className="text-xs text-right mr-4">{'โดย ' + jobInfo.worker}</div>
             </div>
           </div>
         </div>
