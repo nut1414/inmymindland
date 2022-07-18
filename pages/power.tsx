@@ -63,7 +63,7 @@ const Power = () => {
               Delete listing
               <form  id='deleteform' onSubmit={handleDeleteListing} className="p-3 flex flex-col gap-3">
                 <span>UID: <input name="uid" form='deleteform' className="text-black"/></span>
-                <input form='deleteform' type='submit' value='Create Listing' className="bg-red-500  p-3"/>
+                <input form='deleteform' type='submit' value='Delete Listing' className="bg-red-500  p-3"/>
               </form>
             </div>
             <div className="p-2 m-3 bg-slate-800 flex flex-col">

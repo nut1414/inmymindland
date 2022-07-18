@@ -7,7 +7,7 @@ export interface IJobListing {
   image?: string
   name?: string
   description?: string
-  user?: mongoose.Types.ObjectId
+  userinfo?: mongoose.Types.ObjectId
   price?: number
   tags?: string[]
 }
@@ -18,7 +18,7 @@ const jobListingSchema = new mongoose.Schema<IJobListing>({
   image: { type: String, default: '/temp.jpg' },
   name: { type: String, default: '' },
   description: { type: String, default: '' },
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'UserInfo' },
+  userinfo: { type: mongoose.Schema.Types.ObjectId, ref: 'UserInfo' },
   price: { type: Number, default: '' },
   tags: [ String ],
 }, { timestamps: true })
