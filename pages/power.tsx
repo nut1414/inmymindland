@@ -17,7 +17,7 @@ const Power = () => {
       name: (e.target.elements.namedItem('name') as any).value,
       description: (e.target.elements.namedItem('desc') as any).value,
       price: (e.target.elements.namedItem('price') as any).value,
-      tags: ['report'],
+      tags: ['รายงาน Essay','โรงเรียน'],
     }
     )}).then((res) => res.json())
     console.log(result)
@@ -53,7 +53,7 @@ const Power = () => {
                 <span>Listing Name: <input form='listform' name="name" className="rounded text-black" defaultValue="amazing listing"/></span>
                 <span>Description: <textarea form='listform' name="desc" className="rounded text-black" defaultValue="amazing description"/></span>
                 <span>Price: <input form='listform' name="price" type="number" className="rounded text-black" defaultValue="100"/>B</span>
-                <span>Tag: รายงาน</span>
+                <span>Tag: รายงาน, โรงเรียน</span>
                 <span>Image: <Image width='200' height='200' src='/temp.jpg' alt="temp"/></span>
                 <input form='listform' type='submit' value='Create Listing' className="bg-slate-500 p-3"/>
               </form>

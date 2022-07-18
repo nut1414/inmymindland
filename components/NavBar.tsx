@@ -23,35 +23,43 @@ const NavBar = ({bgColor}: navbarProp) => {
 
   return (
     <>
-      <div className={`${ bgColor || "bg-white"} flex flex-row text-xl justify-around medium-tablet:hidden mobile:hidden  big-device:px-64 font-light px-12 rounded-b-sm round mobile:w-full items-center py-4 transition-all duration-500 ease-in-out `}>
-        <Logo/>
-        <div className="flex flex-row place-items-center gap-8 ">
-          <div className="flex flex-col place-items-center">
-            <div className={`ml-1 text-black`}><Link href="/"><a>Home</a></Link></div>
-            <div className={`${pathName === '/' ? 'border-b-2 border-black' : ''} w-1/2`}></div>
-          </div>  
-          <div className=" text-xl font-bold fill-black">•</div>
-          <div className="flex flex-col place-items-center">
-            <div className={`  text-black`}><Link href="/hiring"><a>Hiring</a></Link></div>
-            <div className={`${pathName === '/hiring' ? 'border-b-2 border-black' : ''} w-1/2`}></div>
+      <div className={`${ bgColor || "bg-white"} flex flex-row text-xl  medium-tablet:hidden mobile:hidden  big-device:px-64 font-light px-12 rounded-b-sm round mobile:w-full items-center py-4 transition-all duration-500 ease-in-out `}>
+        <Logo className="mr-auto"/>
+        <div className="flex flex-row place-content-center place-items-center gap-8 text-sm w-full">
+          <div className="flex flex-row gap-8 place-items-center">
+            <div className="flex flex-col place-items-center">
+              <div className={`ml-1 text-black`}><Link href="/"><a>Home</a></Link></div>
+              <div className={`${pathName === '/' ? 'border-b-2 border-black' : ''} w-1/2`}></div>
+            </div>  
+            <div className=" text-xl font-bold fill-black">•</div>
           </div>
-          <div className=" text-xl font-bold fill-black">•</div>
-          <div className="flex flex-col place-items-center">
-            <div className={`  text-black`}><Link href="/findjob"><a>Findjob</a></Link></div>
-            <div className={`${pathName === '/findjob' ? 'border-b-2 border-black' : ''} w-1/2`}></div>
+          <div className="flex flex-row gap-8 place-items-center">
+           <div className="flex flex-col place-items-center">
+             <div className={`  text-black`}><Link href="/hiring"><a>Hiring</a></Link></div>
+             <div className={`${pathName === '/hiring' ? 'border-b-2 border-black' : ''} w-1/2`}></div>
+           </div>
+           <div className=" text-xl font-bold fill-black">•</div>
           </div>
-          <div className=" text-xl font-bold fill-black">•</div>
-          <div className="flex flex-col place-items-center">
-            <div className={`  text-black`}><Link href="/faq"><a>Faq</a></Link></div>
-            <div className={`${pathName === '/faq' ? 'border-b-2 border-black' : ''} w-1/2`}></div>
+          <div className="flex flex-row gap-8 place-items-center">
+            <div className="flex flex-col place-items-center">
+              <div className={`  text-black`}><Link href="/findjob"><a>Findjob</a></Link></div>
+              <div className={`${pathName === '/findjob' ? 'border-b-2 border-black' : ''} w-1/2`}></div>
+            </div>
+            <div className=" text-xl font-bold fill-black">•</div>
+          </div>
+          <div className="flex flex-row gap-8 place-items-center">
+            <div className="flex flex-col place-items-center">
+              <div className={`  text-black`}><Link href="/faq"><a>Faq</a></Link></div>
+              <div className={`${pathName === '/faq' ? 'border-b-2 border-black' : ''} w-1/2`}></div>
+            </div>
           </div>
         </div>
-        <div className="flex flex-row items-center gap-4">
+        <div className="flex flex-row place-content-center ml-auto gap-4">
           <button>
-            <ChatIcon className="h-12 w-12 text-black"/>
+            <ChatIcon className="h-8 w-8 text-black"/>
           </button>
            <button>
-            <InboxIcon className="h-12 w-12 text-black"/>
+            <InboxIcon className="h-8 w-8 text-black"/>
            </button>
            <ProfileIcon/>
         </div>

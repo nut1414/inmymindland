@@ -3,8 +3,8 @@ module.exports = {
   theme: {
     screens: {
       'mobile': {'min': '320px', 'max': '767px'},
-      'medium-tablet': {'min': '768px', 'max': '1024px'},
-      'big-device': {'min': '1025px'},
+      'medium-tablet': {'min': '768px', 'max': '1023px'},
+      'big-device': {'min': '1024px'},
     },
     extend: { 
       fontFamily: {

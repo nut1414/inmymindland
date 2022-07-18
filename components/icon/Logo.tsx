@@ -1,9 +1,12 @@
-const Logo = () => {
+type LogoProp = {
+  className?: string
+}
+
+const Logo = ({className} : LogoProp) => {
   return (
     <svg
-
       id="icon"
-      className="fill-[#0080FF] mobile:w-1/3 medium-tablet:w-1/3 mb-2"
+      className={"fill-[#0080FF] mobile:w-1/3 medium-tablet:w-1/3 mb-2" + className}
       width="45"
       height="38"
       viewBox="0 0 45 38"

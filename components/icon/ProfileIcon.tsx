@@ -9,11 +9,10 @@ import { useRouter } from "next/router";
 const ProfileIcon = () => {
   const { data: Session } = useSession()
   const router = useRouter()
-  signOut
   return(
     <Popover>
       <Popover.Button className="relative">{() => {return Session ?  
-        <img height="40" width="40" className="rounded-full" alt={`userprofile_${Session.user?.name}`} src={`${Session.user?.image}`}/>
+        <img height="70" width="70" className="rounded-full" alt={`userprofile_${Session.user?.name}`} src={`${Session.user?.image}`}/>
         : <UsersIcon className="h-8 w-8 rounded-full"/> }}</Popover.Button>
       <Transition 
         enter="transition duration-100 ease-out"
@@ -25,7 +24,7 @@ const ProfileIcon = () => {
       >
 
         <Popover.Panel as="div" className="flex flex-col absolute bg-[#282828] w-32 right-4 z-10"> 
-          <button className="text-white w-full bg-red-500" onClick={() => {Session ? signOut() : signIn()}}>{Session ? "sign out" : "sign in"}</button>
+          <button className="text-white w-full bg-red-500" onClick={() => {Session ? signOut() : signIn()}} onFocus={() => {Session ? signOut() : signIn()}}>{Session ? "sign out" : "sign in"}</button>
           <div>{Session?.user?.name}</div>
           
           <button className={`text-white ${Session ? "" : "invisible"} w-full`} onClick={() => {router.push('/profile')}}>แก้ไขข้อมูล</button>

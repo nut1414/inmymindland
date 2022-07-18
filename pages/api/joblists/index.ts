@@ -24,21 +24,21 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
   try{
     if (req.method === 'GET'){
       let query: ListingDbQuery = {}
-      if (typeof s === 'string') {
+      if (typeof s === 'string' && s.length) {
         query.name = { '$regex': s, '$options': 'i'}
       }
       if (typeof userid === 'string') {
         query.user = userid
       }
       if (tags instanceof Array){
-        query.tags = tags.length ? { "$in": tags } : { "$exists": true }
+        query.tags = (tags.length!=0) ? { "$in": tags } : { "$exists": true }
       }
       if (!isNaN(pricemin) || !isNaN(pricemax)){
         query.price = {}
         query.price['$lte'] = clamp(pricemax, 0, 20000)
         query.price['$gte'] = clamp(pricemin, 0, 20000)
       }
-
+      
       const joblist = await JobListing.find(query,{},{limit:clamp(limit,1,100), skip:clamp((pagenum-1)*limit, 0, 2000)}).populate('userinfo',[
         'worker_profile', 'user'
       ])
@@ -48,7 +48,10 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
         total: jobcount,
         page: pagenum,
         total_pages: Math.ceil(jobcount / limit),
-        limit: limit
+        limit: limit,
+        search: s,
+        tags,
+        query
       })
     }else if (user.role === 'worker' || 
               user.role === 'admin'){

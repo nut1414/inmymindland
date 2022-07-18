@@ -1,101 +1,49 @@
 import Head from "next/head";
 import Template from "../../components/common/Template";
-import Job, {IJob} from "../../components/hiring/Job";
+import Listing from "../../components/hiring/Listing";
 import { nanoid } from "nanoid";
 import { useSession } from "next-auth/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchHiringBox from "../../components/hiring/SearchHiringBox";
+import { IJobListing } from "../../models/JobListing";
+import { IUserInfo } from "../../models/UserInfo";
+import { IWorkerProfile } from '../../models/UserInfo'
 
-const testdata: IJob[] = [
-   {
-     uid: nanoid(),
-     price: 100,
-     workerimage: '/favicon-32x32.png',
-     worker: 'oPun',
-     tags: [
-      {
-        name: 'ฟิสิกส์',
-        id: 1,
-      },
-      {
-        name: 'HW',
-        id: 2,
-      }
-     ],
-     name: 'Awesome Job',
-     description: nanoid(21),
-   },
-   {
-    uid: nanoid(),
-    price: 100,
-    workerimage: '/favicon-32x32.png',
-    worker: 'oPun',
-    tags: [
-     {
-       name: 'ชีววิทยา',
-       id: 1,
-     },
-     {
-       name: 'Presentation',
-       id: 2,
-     }
-    ],
-    name: 'Awesome Job',
-    description: nanoid(21),
-  },
-  {
-    uid: nanoid(),
-    price: 100,
-    workerimage: '/favicon-32x32.png',
-    worker: 'oPun',
-    tags: [
-     {
-       name: 'ภูมิศาสตร์',
-       id: 1,
-     },
-     {
-       name: 'Poster',
-       id: 2,
-     }
-    ],
-    name: 'Awesome Job',
-    description: nanoid(21),
-  },
-  {
-    uid: nanoid(),
-    price: 100,
-    workerimage: '/favicon-32x32.png',
-    worker: 'oPun',
-    tags: [
-     {
-       name: 'คณิตศาสตร์',
-       id: 1,
-     },
-     {
-       name: 'HW',
-       id: 2,
-     }
-    ],
-    name: 'Awesome Job',
-    description: nanoid(21),
-  },
-]
+export interface HydratedJobListing extends Omit<IJobListing, 'userinfo'> {
+  userinfo: {
+    user: string,
+    worker_profile: IWorkerProfile
+  }
+}
 
 const Hiring = () => {
+  const [ listing, setListing ] = useState([] as HydratedJobListing[])
   const { data: session } = useSession()
-  const [workName, setWorkName] = useState();
+  const [searchText, setSearchText] = useState("");
+  const [workCat, setWorkCat] = useState("")
+  const [schoolCat, setSchoolCat] = useState("")
+  const [sortBy, setSortBy] = useState("")
+
+  const doSearch = async () => {
+    const searchparam = new URLSearchParams([['s',searchText], ['tags',schoolCat],['tags',workCat]])
+    const listsget = await fetch('/api/joblists?' + searchparam,{method:'GET'}).then((res) => res.json()).then((data) => 
+    setListing(data?.result || [])
+    )
+  }
+
+  useEffect(() => {
+    doSearch()
+  },[])
   return (
     <div>
       <Head>
         <title>Hiring | Inmymind</title>
       </Head>
-      <Template className="mx-64">
-        <SearchHiringBox state={setWorkName}/>
-        <div className="grid grid-cols-6 gap-2 medium-tablet:grid-cols-3 big-device:grid-cols-6 mt-16 place-items-center">
-          {testdata?.map((job) => {if (job) {if (session) job.workerimage=session?.user?.image as string;} return (<Job key={job.uid} jobInfo={job}/>)})}
+      <Template className="mx-40" bgColor="bg-[#F5F5F5]">
+        <SearchHiringBox search={doSearch} searchTextState={setSearchText} workState={setWorkCat} schoolState={setSchoolCat} sortByState={setSortBy}/>
+        <div className="gap-x-4 flex flex-row flex-wrap mt-16 z-0 justify-start">
+          {listing?.map((joblist) => <Listing key={joblist.uid} listingInfo={joblist}/>)}
         </div>
-
-        
       </Template>
 
     </div>

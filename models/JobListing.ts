@@ -2,14 +2,14 @@ import mongoose from 'mongoose'
 import { nanoid } from 'nanoid'
 
 export interface IJobListing {
-  uid?: string
-  status?: string
-  image?: string
-  name?: string
-  description?: string
-  userinfo?: mongoose.Types.ObjectId
-  price?: number
-  tags?: string[]
+  uid: string
+  status: string
+  image: string
+  name: string
+  description: string
+  userinfo: mongoose.Types.ObjectId
+  price: number
+  tags: string[]
 }
 
 const jobListingSchema = new mongoose.Schema<IJobListing>({
@@ -19,7 +19,7 @@ const jobListingSchema = new mongoose.Schema<IJobListing>({
   name: { type: String, default: '' },
   description: { type: String, default: '' },
   userinfo: { type: mongoose.Schema.Types.ObjectId, ref: 'UserInfo' },
-  price: { type: Number, default: '' },
+  price: { type: Number, default: 0 },
   tags: [ String ],
 }, { timestamps: true })
 
