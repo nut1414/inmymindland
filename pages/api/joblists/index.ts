@@ -8,19 +8,19 @@ import JobListing from '../../../models/JobListing'
 import clamp from '../../../utils/clamp'
 interface ListingDbQuery {
   name ?: { '$regex'?: string, '$options'?: string } | string
-  tags ?: { '$in'?: string[], '$exists'?: boolean }
+  tags ?: { '$in'?: string[], '$exists'?: boolean } | string[]
   price ?: { '$lte'?: number, '$gte'?: number }
   user ?: string
 }
 
 async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) {
   const session = (req.session) ? req.session : {} as HydratedSession 
-  const user = await UserInfo.findByUserId(session.id)
+  const usersInfo = await UserInfo.findByUserId(session.id)
   const { page, tags, pmin, pmax, s, lim, userid } = req.query
   const pagenum = parseInt(page as string) || 1
   const limit = parseInt(lim as string) || 25
-  const pricemin = parseInt(pmin as string)
-  const pricemax = parseInt(pmax as string)
+  const pricemin = parseInt(pmin as string) || 0
+  const pricemax = parseInt(pmax as string) || 200000
   try{
     if (req.method === 'GET'){
       let query: ListingDbQuery = {}
@@ -31,38 +31,50 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
         query.user = userid
       }
       if (tags instanceof Array){
-        query.tags = (tags.length!=0) ? { "$in": tags } : { "$exists": true }
+        const filteredtag = tags.filter((s)=>s.length)
+        if (filteredtag.length)
+          query.tags = [...filteredtag]
+      }else if (typeof tags === 'string'){
+        if (tags.length){
+          query.tags = {$in: [tags]}
+        }
+        
       }
       if (!isNaN(pricemin) || !isNaN(pricemax)){
         query.price = {}
         query.price['$lte'] = clamp(pricemax, 0, 20000)
         query.price['$gte'] = clamp(pricemin, 0, 20000)
       }
-      
+
       const joblist = await JobListing.find(query,{},{limit:clamp(limit,1,100), skip:clamp((pagenum-1)*limit, 0, 2000)}).populate('userinfo',[
         'worker_profile', 'user'
       ])
       const jobcount = await JobListing.find(query).countDocuments()
       res.status(200).json({
+        status:'ok',
         result: joblist,
         total: jobcount,
         page: pagenum,
         total_pages: Math.ceil(jobcount / limit),
         limit: limit,
-        search: s,
-        tags,
-        query
+        query:{
+          string: s,
+          tags: query.tags,
+          price_min: pmin,
+          price_max: pmax,
+          userid
+        }
       })
-    }else if (user.role === 'worker' || 
-              user.role === 'admin'){
+    }else if (usersInfo.role === 'worker' || 
+              usersInfo.role === 'admin'){
       if (req.method === 'POST'){
-        console.log(user)
+        console.log(usersInfo)
         const newlisting = await JobListing.create({
           status: req.body.status,
           image: req.body.image,
           name: req.body.name,
           description: req.body.description,
-          userinfo: user.id,
+          userinfo: usersInfo.id,
           price: req.body.price,
           tags: req.body.tags
         },)
