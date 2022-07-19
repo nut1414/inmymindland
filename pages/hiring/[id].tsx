@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import Template from "../../components/common/Template";
 import Image from "next/image";
 import { useState } from "react";
-import { TagInfo } from "../../components/hiring/Job";
 import { useSession } from "next-auth/react";
 
 
