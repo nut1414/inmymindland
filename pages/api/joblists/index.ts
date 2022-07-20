@@ -16,11 +16,12 @@ interface ListingDbQuery {
 async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) {
   const session = (req.session) ? req.session : {} as HydratedSession 
   const usersInfo = await UserInfo.findByUserId(session.id)
-  const { page, tags, pmin, pmax, s, lim, userid } = req.query
+  const { page, tags, pmin, pmax, psort, s, lim, userid } = req.query
   const pagenum = parseInt(page as string) || 1
   const limit = parseInt(lim as string) || 25
-  const pricemin = parseInt(pmin as string) || 0
-  const pricemax = parseInt(pmax as string) || 200000
+  const pricemin = parseInt(pmin as string)
+  const pricemax = parseInt(pmax as string)
+  const pricesort = (psort as string === 'DESC') ? {price: -1} : {price: 1}
   try{
     if (req.method === 'GET'){
       let query: ListingDbQuery = {}
@@ -31,9 +32,9 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
         query.user = userid
       }
       if (tags instanceof Array){
-        const filteredtag = tags.filter((s)=>s.length)
-        if (filteredtag.length)
-          query.tags = [...filteredtag]
+        const filteredtags = tags.filter((s)=>s.length)
+        if (filteredtags.length)
+          query.tags = {$in: [...filteredtags]}
       }else if (typeof tags === 'string'){
         if (tags.length){
           query.tags = {$in: [tags]}
@@ -45,10 +46,9 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
         query.price['$lte'] = clamp(pricemax, 0, 20000)
         query.price['$gte'] = clamp(pricemin, 0, 20000)
       }
-
       const joblist = await JobListing.find(query,{},{limit:clamp(limit,1,100), skip:clamp((pagenum-1)*limit, 0, 2000)}).populate('userinfo',[
         'worker_profile', 'user'
-      ])
+      ]).sort(pricesort)
       const jobcount = await JobListing.find(query).countDocuments()
       res.status(200).json({
         status:'ok',
@@ -62,7 +62,8 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
           tags: query.tags,
           price_min: pmin,
           price_max: pmax,
-          userid
+          userid,
+          price_sort: (psort === 'DESC') ? 'DESC' : 'ASC'
         }
       })
     }else if (usersInfo.role === 'worker' || 
@@ -78,7 +79,7 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
           price: req.body.price,
           tags: req.body.tags
         },)
-        res.status(200).json({status:'ok', listing: newlisting})
+        res.status(201).json({status:'ok', listing: newlisting})
       } else {
         res.status(405).json({status:'error', error: 'method not allowed'})
       }

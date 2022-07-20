@@ -3,29 +3,40 @@ import { connectDb } from '../../../utils/middlewares/connectDb'
 import { protectedApi } from '../../../utils/middlewares/protectedApi'
 import { NextApiRequestWithMiddleware } from '../../../utils/middlewares'
 import { HydratedSession } from '../auth/[...nextauth]'
-import JobListing from '../../../models/JobListing'
+import JobListing, { IJobListing } from '../../../models/JobListing'
 import UserInfo from '../../../models/UserInfo'
 
+interface IRecommendation {
+  listing?: IJobListing[]
+  total?: number
+}
 
 async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) {
   const session = (req.session) ? req.session : {} as HydratedSession 
-  const user = await UserInfo.findByUserId(session.id)
-  const { uid } = req.query 
-  
-  
+  const usersInfo = await UserInfo.findByUserId(session.id)
+  const { uid, recommend } = req.query 
+  const findrecommend = (recommend === 'false') ? false : true 
   try{
     if(req.method === 'GET'){
       const listing = await JobListing.findOne({uid}).populate('userinfo',[
         'worker_profile', 'user'
       ])
+      let recommendation: IRecommendation | undefined = undefined
+      if (findrecommend === true) {
+        const reclist = await JobListing.find({tags: {$in: [...listing.tags]}},{},{limit:10})
+        recommendation = {
+          listing: reclist,
+          total: reclist.length
+        }
+      }
       if (listing){
-        res.status(200).json({status:'ok', listing})
+        res.status(200).json({status:'ok', listing, recommendation})
       }else{
         res.status(404).json({status:'error', error: 'not found'})
       }
 
-    }else if (user.role === 'worker' || 
-              user.role === 'admin'){
+    }else if (usersInfo.role === 'worker' || 
+              usersInfo.role === 'admin'){
       if (req.method === 'PATCH'){
         const changes = {
           status: req.body.status,
@@ -35,7 +46,7 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
           tags: req.body.tags
         }
         const query: {uid:string, user?:string} = {uid} as { uid: string }
-        if(user.role === 'worker'){
+        if(usersInfo.role === 'worker'){
           query.user = session.id
         }
         const listing = await JobListing.findOneAndUpdate(query,changes,{new:true})
@@ -47,7 +58,7 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
 
       }else if (req.method === 'DELETE'){
         const query: {uid:string, user?:string} = {uid} as { uid: string }
-        if(user.role === 'worker'){
+        if(usersInfo.role === 'worker'){
           query.user = session.id
         }
         const listing = await JobListing.findOneAndDelete(query)
