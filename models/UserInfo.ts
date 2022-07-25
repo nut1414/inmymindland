@@ -32,6 +32,8 @@ const contactSchema = new mongoose.Schema<IContact>({
   name: { type: String, default: '' },
   email: { type: String, default: '' },
   address: { type: String, default: '' },
+  city: { type: String, default: '' },
+  postcode: { type: Number, defaut: 0,},
   phone: { type: String, default: '' },
   birthdate: { type: Date, default: new Date() },
   education: { type: String, default: '' },
