@@ -39,7 +39,7 @@ const Hiring = () => {
       <Head>
         <title>Hiring | Inmymind</title>
       </Head>
-      <Template className="mx-40" bgColor="bg-[#F5F5F5]">
+      <Template className="big-device:mx-40 medium-tablet:mx-20" bgColor="bg-[#F5F5F5]">
         <SearchHiringBox search={doSearch} searchTextState={setSearchText} workState={setWorkCat} schoolState={setSchoolCat} sortByState={setSortBy}/>
         <div className="gap-x-4 flex flex-row flex-wrap mt-16 z-0 justify-start">
           {listing?.map((joblist) => <Listing key={joblist.uid} listingInfo={joblist}/>)}
