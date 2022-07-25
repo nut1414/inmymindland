@@ -23,7 +23,7 @@ const NavBar = ({bgColor}: navbarProp) => {
 
   return (
     <>
-      <div className={`${ bgColor || "bg-white"} flex flex-row text-xl  medium-tablet:hidden mobile:hidden  big-device:px-64 font-light px-12 rounded-b-sm round mobile:w-full items-center py-4 transition-all duration-500 ease-in-out `}>
+      <div className={`${ bgColor || "bg-white"} flex flex-row text-xl  mobile:hidden  big-device:px-64 font-light px-12 rounded-b-sm round mobile:w-full items-center py-4 transition-all duration-500 ease-in-out `}>
         <Logo className="mr-auto"/>
         <div className="flex flex-row place-content-center place-items-center gap-8 text-sm w-full">
           <div className="flex flex-row gap-8 place-items-center">
@@ -64,7 +64,7 @@ const NavBar = ({bgColor}: navbarProp) => {
            <ProfileIcon/>
         </div>
       </div>
-      <div className="bg-[#242424] relative flex font-normal text-xl w-screen drop-shadow-md  big-device:hidden  px-2 medium-tablet:px-8 rounded-b-sm round items-center    py-8 transition-all duration-500 ease-in-out ">
+      <div className="bg-[#242424] relative flex font-normal text-xl w-screen drop-shadow-md  big-device:hidden medium-tablet:hidden  px-2 medium-tablet:px-8 rounded-b-sm round items-center    py-8 transition-all duration-500 ease-in-out ">
         <MobileBurger/>
         <Logo/>
         <button id="interest" onClick={btclick} className=" text-sm medium-tablet:text-lg w-1/3 border-2 border-white text-white p-2  mobile:py-1"><a href="#regisForm">Login</a></button>
