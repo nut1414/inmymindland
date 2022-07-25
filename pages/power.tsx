@@ -2,18 +2,24 @@ import { useSession } from "next-auth/react";
 import Head from "next/head"
 import Template from "../components/common/Template";
 import Image from "next/image";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import ImageUploader from "../components/common/ImageUploader";
+import { CldImage } from "../models/schemas/Image";
+import { TrashIcon } from "@heroicons/react/solid";
+
 
 const Power = () => {
   const {data:session, status} = useSession()
   const [ listing, setListing ] = useState()
   const [ newlist, setnewlist ] = useState()
+  const [ cldimg, setcldimg ] = useState<CldImage>()
+  const thumburl = useMemo<string>(() =>  cldimg?.secure_url ? cldimg.secure_url : '/temp.jpg', [cldimg])
   const handleCreateListing = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
     const result = await fetch('/api/joblists', {method:'POST',headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
       status: 'published',
-      image: '/temp.jpg',
+      image: cldimg?.secure_url ? {type: 'cloudinary',url: '/temp.jpg', pid: cldimg.public_id} : { type: 'url', url: '/temp.jpg' },
       name: (e.target.elements.namedItem('name') as any).value,
       description: (e.target.elements.namedItem('desc') as any).value,
       price: (e.target.elements.namedItem('price') as any).value,
@@ -23,10 +29,8 @@ const Power = () => {
     console.log(result)
     setnewlist(result)
   }
-
   const handleDeleteListing = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // to be implemented
     const result = await fetch(`/api/joblists/${(e.target.elements.namedItem('uid') as any).value}`, {method:'DELETE'}).then((res) => res.json())
     console.log(result)
     alert(JSON.stringify(result))
@@ -37,6 +41,13 @@ const Power = () => {
     console.log(listsget || {})
     setListing(listsget?.result || [])
   }
+
+  const handleDeleteCldImg = () => {
+    if (cldimg) {
+      setcldimg(undefined)
+    }
+  }
+
   return (
     <div>
       <Head>
@@ -54,10 +65,13 @@ const Power = () => {
                 <span>Description: <textarea form='listform' name="desc" className="rounded text-black" defaultValue="amazing description"/></span>
                 <span>Price: <input form='listform' name="price" type="number" className="rounded text-black" defaultValue="100"/>B</span>
                 <span>Tag: รายงาน, โรงเรียน</span>
-                <span>Image: <Image width='200' height='200' src='/temp.jpg' alt="temp"/></span>
+                <div className="flex place-content-center">Image: <Image width={200} height={120} src={thumburl} alt="temp"/> {cldimg && <TrashIcon onClick={handleDeleteCldImg} className="w-5 h-5"/>}</div>
+                
+                <ImageUploader preset="ntsplg" callback={(data) => {setcldimg(data);console.log(data)}}/>
                 <input form='listform' type='submit' value='Create Listing' className="bg-slate-500 p-3"/>
               </form>
               {JSON.stringify(newlist)}
+
             </div>
             <div className="p-2 m-3 bg-slate-800 flex flex-col">
               Delete listing

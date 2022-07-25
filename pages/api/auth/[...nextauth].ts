@@ -3,14 +3,19 @@ import GoogleProvider from "next-auth/providers/google"
 import FacebookProvider from "next-auth/providers/facebook"
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
 import clientPromise from "../../../utils/database/mongodbConnect"
-import UserInfo from "../../../models/UserInfo"
+import UserInfo, { IUserInfo } from "../../../models/UserInfo"
 import { NextAuthOptions, Session } from "next-auth"
 import mongooseConnect from "../../../utils/database/mongooseConnect"
 import mongoose from "mongoose"
-
+import cloudinary from 'cloudinary'
+import { DefaultImage } from "../../../models/schemas/Image"
 export interface HydratedSession extends Session {
   id: string
 }
+
+cloudinary.v2.config({
+  secure: true
+})
 
 export const authOptions: NextAuthOptions = {
   adapter: MongoDBAdapter(clientPromise),
@@ -43,6 +48,8 @@ export const authOptions: NextAuthOptions = {
       await mongooseConnect()
       session.id = user.id || ''
       const userdata = await UserInfo.findOne({user: user.id})
+      if (session.user && userdata && userdata.image?.type === 'cloudinary')
+        session.user.image = userdata.image.url
       session.role = userdata?.role || 'user'
       return session as HydratedSession
     }
@@ -50,14 +57,22 @@ export const authOptions: NextAuthOptions = {
   events:{
     async createUser({ user }){
       await mongooseConnect()
+      let cldimg: cloudinary.UploadApiResponse | cloudinary.UploadApiErrorResponse | undefined = undefined
+      if ( user.image )
+          cldimg = await cloudinary.v2.uploader.upload(user.image,{
+          upload_preset: process.env.CLD_PROFILE_PRESET,
+          public_id: user.id
+        })
+
       const userDoc = await UserInfo.create({
         user: new mongoose.Types.ObjectId(user.id),
         contact:{ 
                   name: user.name, email: user.email 
                 },
         worker_profile: {
-                  name: user.name, image: user.image
-                }
+                  name: user.name, image: cldimg?.secure_url ? { type: 'cloudinary',url: cldimg.secure_url, pid: cldimg.public_id } : DefaultImage
+                },
+        image: cldimg?.secure_url ? { type: 'cloudinary',url: cldimg.secure_url, pid: cldimg.public_id } : DefaultImage
       })
       console.log(userDoc)
     }

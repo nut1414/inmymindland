@@ -41,6 +41,8 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
         const changes = {
           status: req.body.status,
           name: req.body.name,
+          image: req.body.image,
+          additionalImage: req.body.additionalImage,
           description: req.body.description,
           price: req.body.price,
           tags: req.body.tags
@@ -72,7 +74,7 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
         res.status(405).json({status:'error', error: 'method not allowed'})
       }
     }else{
-      res.status(405).json({status:'error', error: 'method not allowed'})
+      res.status(401).json({status:'error', error: 'unauthorized'})
     }
   }catch (e: unknown){
     console.log(e)

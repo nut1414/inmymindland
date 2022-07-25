@@ -69,10 +69,10 @@ async function handler(req: NextApiRequestWithMiddleware, res: NextApiResponse) 
     }else if (usersInfo.role === 'worker' || 
               usersInfo.role === 'admin'){
       if (req.method === 'POST'){
-        console.log(usersInfo)
         const newlisting = await JobListing.create({
           status: req.body.status,
           image: req.body.image,
+          additionalImage: req.body.additionalImage,
           name: req.body.name,
           description: req.body.description,
           userinfo: usersInfo.id,

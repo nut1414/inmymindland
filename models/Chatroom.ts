@@ -9,13 +9,12 @@ interface IMessage {
 }
 
 interface IChatroom {
-  name?: string
-  uid?: string
+  name: string
   messages?: IMessage[]
 }
 
 const messagesSchema = new mongoose.Schema<IMessage>({
-  sender: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, 
+  sender: { type: mongoose.Schema.Types.ObjectId, ref: 'UserInfo' }, 
   content: { type: String }, 
   contentType: { type: String }, 
   'timestamp': { type: Number }   
@@ -23,7 +22,6 @@ const messagesSchema = new mongoose.Schema<IMessage>({
 
 const chatroomSchema = new mongoose.Schema<IChatroom>({
   name: { type: String, default: 'Chatroom' },
-  uid: { type: String, default: () => nanoid() },
   messages: [ { type: messagesSchema } ]
 }, {timestamps: true} )
 
